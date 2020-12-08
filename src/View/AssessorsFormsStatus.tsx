@@ -79,7 +79,7 @@ export default function ApprovedGeneralAssessmentResults(): ReactElement {
     });
   return (
     <>
-      {list ? <CustomTable rows={rows} columns={columns} hasAsction={true} /> : <NoData />}
+      {list.length ? <CustomTable rows={rows} columns={columns} hasAsction={true} /> : <NoData />}
       {currentRiskAssessment?.loading && <Loading />}
     </>
   );

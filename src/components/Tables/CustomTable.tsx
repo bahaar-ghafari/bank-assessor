@@ -28,8 +28,10 @@ export default function CustomTable(props: IProps) {
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
-            {columns.map((item: { label: string; value: string }) => (
-              <TableCell align="center">{item.label}</TableCell>
+            {columns.map((item: { label: string; value: string }, index: number) => (
+              <TableCell key={index} align="center">
+                {item.label}
+              </TableCell>
             ))}
           </TableRow>
         </TableHead>

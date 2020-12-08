@@ -1,8 +1,8 @@
-import React from "react";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import { ListItemText, List } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import React from 'react';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import { ListItemText, List } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 type IProps = {
   list: IPropsItem[];
@@ -16,10 +16,11 @@ export const MainListItems = (props: IProps) => {
   const { list } = props;
   return (
     <List>
-      {list.map((item) => (
+      {list.map((item: any, index: number) => (
         <Link
+          key={index}
           to={`/${item.rout}`}
-          style={{ textDecoration: "none", color: "darkslategray" }}
+          style={{ textDecoration: 'none', color: 'darkslategray' }}
         >
           <ListItem button>
             <ListItemIcon>{item.icon}</ListItemIcon>
