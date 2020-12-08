@@ -16,11 +16,13 @@ export default function ApprovedGeneralAssessmentResults(): ReactElement {
     dispatch(RiskAssessment());
   }, []);
   const currentRiskAssessment = useSelector((state: IApplicationState) => state.riskAssessment);
-  const list = currentRiskAssessment?.data?.filter(
-    (item) =>
-      item.status === 'GENERAL_ASSESSMENT_APPROVED' ||
-      item.status === 'GENERAL_ASSESSMENT_NOT_APPROVED',
-  );
+  const list =
+    currentRiskAssessment &&
+    currentRiskAssessment?.data?.filter(
+      (item) =>
+        item.status === 'GENERAL_ASSESSMENT_APPROVED' ||
+        item.status === 'GENERAL_ASSESSMENT_NOT_APPROVED',
+    );
   return (
     <div>
       {list && list.length ? (

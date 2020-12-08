@@ -8,9 +8,10 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 type IProps = {
   open: boolean;
   onClose: () => void;
+  deleteFunc: any;
 };
 export default function DeleteModal(props: IProps) {
-  const { open, onClose } = props;
+  const { open, onClose, deleteFunc } = props;
   return (
     <Dialog
       maxWidth="lg"
@@ -26,7 +27,7 @@ export default function DeleteModal(props: IProps) {
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose}>خیر</Button>
-        <Button onClick={onClose} autoFocus>
+        <Button onClick={deleteFunc} autoFocus>
           بله
         </Button>
       </DialogActions>

@@ -11,6 +11,11 @@ export interface IOneRiskAssessmentState {
   data: assesmentModel;
   loading: boolean;
 }
+
+export interface IRiskAssessmentComponentState {
+  data: assesmentComponentModel;
+  loading: boolean;
+}
 //IRiskAssessment
 interface IRiskAssessment extends Action<string> {
   type: RiskAssessmentActionTypes.GetRiskAssessment;
@@ -55,6 +60,28 @@ interface IDeleteRiskAssessmentSuccess extends Action<string> {
 interface IDeleteRiskAssessmentFail extends Action<string> {
   type: RiskAssessmentActionTypes.DeleteRiskAssessmentFail;
 }
+//component get
+interface IRiskAssessmentComponent extends Action<string> {
+  type: RiskAssessmentActionTypes.GetRiskAssessmentComponent;
+}
+interface IRiskAssessmentComponentSuccess extends Action<string> {
+  type: RiskAssessmentActionTypes.GetRiskAssessmentComponentSuccess;
+  data: IRiskAssessmentState;
+}
+interface IRiskAssessmentComponentFail extends Action<string> {
+  type: RiskAssessmentActionTypes.GetRiskAssessmentComponentFail;
+}
+//component create
+interface ICreateRiskAssessmentComponent extends Action<string> {
+  type: RiskAssessmentActionTypes.CreateRiskAssessmentComponent;
+}
+interface ICreateRiskAssessmentComponentSuccess extends Action<string> {
+  type: RiskAssessmentActionTypes.CreateRiskAssessmentComponentSuccess;
+  data: IRiskAssessmentState;
+}
+interface ICreateRiskAssessmentComponentFail extends Action<string> {
+  type: RiskAssessmentActionTypes.CreateRiskAssessmentComponentFail;
+}
 export type ActionModel =
   | IRiskAssessment
   | IRiskAssessmentSuccess
@@ -67,4 +94,10 @@ export type ActionModel =
   | ICreateRiskAssessmentFail
   | IDeleteRiskAssessment
   | IDeleteRiskAssessmentSuccess
-  | IDeleteRiskAssessmentFail;
+  | IDeleteRiskAssessmentFail
+  | IRiskAssessmentComponent
+  | IRiskAssessmentComponentSuccess
+  | IRiskAssessmentComponentFail
+  | ICreateRiskAssessmentComponent
+  | ICreateRiskAssessmentComponentSuccess
+  | ICreateRiskAssessmentComponentFail;

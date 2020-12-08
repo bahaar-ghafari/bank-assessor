@@ -60,6 +60,25 @@ export const RiskAssessmentReducer: Reducer<any> = (state: any = null, action: a
         loading: false,
       } as any;
     }
+    case RiskAssessmentActionTypes.DeleteRiskAssessment: {
+      return {
+        ...state,
+        loading: true,
+      } as any;
+    }
+    case RiskAssessmentActionTypes.DeleteRiskAssessmentSuccess: {
+      return {
+        ...state.riskAssessment,
+        loading: false,
+        data: action.data,
+      } as any;
+    }
+    case RiskAssessmentActionTypes.DeleteRiskAssessmentFail: {
+      return {
+        ...state,
+        loading: false,
+      } as any;
+    }
   }
   return state;
 };

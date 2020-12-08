@@ -19,6 +19,7 @@ export const RiskAssessment = (): AppAction<ActionModel> => async (dispatch, get
     dispatch({ type: RiskAssessmentActionTypes.GetRiskAssessmentFail });
   }
 };
+
 export const OneRiskAssessment = (history: any, id: number): AppAction<ActionModel> => async (
   dispatch,
   getState,
@@ -60,5 +61,24 @@ export const CreateRiskAssessment = (
     }
   } catch (error) {
     dispatch({ type: RiskAssessmentActionTypes.CreateRiskAssessmentFail });
+  }
+};
+
+export const DeleteRiskAssessment = (id: number): AppAction<ActionModel> => async (
+  dispatch,
+  getState,
+) => {
+  dispatch({ type: RiskAssessmentActionTypes.DeleteRiskAssessment });
+  try {
+    const res = await RiskAssessmentApi.DeleteRiskAssessment(id);
+    if (res.data) {
+      const data = res.data;
+      dispatch({
+        type: RiskAssessmentActionTypes.DeleteRiskAssessmentSuccess,
+        data: data,
+      });
+    }
+  } catch (error) {
+    dispatch({ type: RiskAssessmentActionTypes.DeleteRiskAssessmentFail });
   }
 };

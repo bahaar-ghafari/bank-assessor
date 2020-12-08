@@ -15,4 +15,12 @@ export enum RiskAssessmentActionTypes {
   DeleteRiskAssessment = 'RiskAssessment/delete',
   DeleteRiskAssessmentSuccess = 'RiskAssessmentSuccess/delete',
   DeleteRiskAssessmentFail = 'RiskAssessmentFail/delete',
+  //all RiskAssessment component
+  GetRiskAssessmentComponent = 'RiskAssessmentComponent/all',
+  GetRiskAssessmentComponentSuccess = 'RiskAssessmentComponentSuccess/all',
+  GetRiskAssessmentComponentFail = 'RiskAssessmentComponentFail/all',
+
+  CreateRiskAssessmentComponent = 'RiskAssessmentComponent/create',
+  CreateRiskAssessmentComponentSuccess = 'RiskAssessmentComponentSuccess/create',
+  CreateRiskAssessmentComponentFail = 'RiskAssessmentComponentFail/create',
 }

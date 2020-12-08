@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  Switch,
-  Route,
-  // Redirect,
-} from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import DefineNewAssessorsForms from './DefineNewAssessorsForms';
 import AssessorsFormsStatus from './AssessorsFormsStatus';
 import AssessorsFormsStatusPerPage from './AssessorsFormsStatusPerPage';
@@ -21,7 +17,8 @@ import NotFoundComponent from './NotFoundComponent';
 function PrivateRout() {
   return (
     <Switch>
-      <Route path="/BankAssessorsResponse/:id" component={AssessorsFormsStatusPerPage} />
+      <Route path="/AssessorsFormsStatus/:id" component={AssessorsFormsStatusPerPage} />
+      {/* <Route path="/BankAssessorsResponse/:id" component={BankAssessorsResponsePerPage} /> */}
       {/* risk_management_assessor_sideBarItems */}
       <Route replace path="/DefineNewAssessorsForms" component={DefineNewAssessorsForms} />
       <Route replace path="/CheckBankAssessorSResponse" component={CheckBankAssessorSResponse} />

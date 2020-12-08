@@ -1,15 +1,14 @@
-import { Reducer } from "redux";
-import { IAuthState, ActionModel } from "./model";
-import { AuthActionTypes } from "./actionType";
-const storedPortfolio = localStorage.getItem("userStatus");
+import { Reducer } from 'redux';
+import { IAuthState, ActionModel } from './model';
+import { AuthActionTypes } from './actionType';
+
+const storedPortfolio = localStorage.getItem('userStatus');
 const unloadedState: IAuthState =
-  typeof storedPortfolio === "string"
-    ? JSON.parse(storedPortfolio)
-    : storedPortfolio;
+  typeof storedPortfolio === 'string' ? JSON.parse(storedPortfolio) : storedPortfolio;
 
 export const AuthReducer: Reducer<IAuthState> = (
   state: IAuthState = unloadedState,
-  action: ActionModel
+  action: ActionModel,
 ) => {
   switch (action.type) {
     case AuthActionTypes.Login: {
