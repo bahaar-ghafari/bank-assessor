@@ -12,7 +12,6 @@ export default function DefineNewAssessorsForms(): ReactElement {
     deadlineDate: '',
   });
   const handleChange = (name: string, value: string) => {
-    console.log('bhr', name, value);
     setAssessors({ ...Assessors, [name]: value });
   };
   const HandleSubmit = (event: React.ChangeEvent<HTMLInputElement>) => {
