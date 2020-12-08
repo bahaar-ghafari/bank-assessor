@@ -1,25 +1,32 @@
 import React, { ReactElement, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import RiskAssessmentForms from '../components/RiskAssessment/RiskAssessmentForm';
+import { CreateRiskAssessment } from '../redux/RiskAssessment/action';
 
-interface IProps {}
-
-export default function DefineNewAssessorsForms(props: IProps): ReactElement {
+export default function DefineNewAssessorsForms(): ReactElement {
+  const dispatch = useDispatch();
   const [Assessors, setAssessors] = useState({
     title: '',
     bankName: '',
     startDate: '',
-    endDate: '',
+    deadlineDate: '',
   });
-  const HandleSubmit = () => {};
+  const handleChange = (name: string, value: string) => {
+    console.log('bhr', name, value);
+    setAssessors({ ...Assessors, [name]: value });
+  };
+  const HandleSubmit = (event: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(CreateRiskAssessment(event, Assessors));
+  };
   return (
     <div>
       <RiskAssessmentForms
         title={Assessors.title}
         bankName={Assessors.bankName}
         startDate={Assessors.startDate}
-        endDate={Assessors.endDate}
-        onHandleInput={setAssessors}
-        onSubmit={HandleSubmit}
+        deadlineDate={Assessors.deadlineDate}
+        onChange={handleChange}
+        onSubmit={(event: React.ChangeEvent<HTMLInputElement>) => HandleSubmit(event)}
       />
     </div>
   );

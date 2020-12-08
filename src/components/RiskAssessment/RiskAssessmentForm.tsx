@@ -8,13 +8,13 @@ interface IProps {
   title: string;
   bankName: string;
   startDate: string;
-  endDate: string;
-  onHandleInput: any;
+  deadlineDate: string;
+  onChange: any;
   onSubmit: any;
 }
 
 export default function RiskAssessmentForms(props: IProps): ReactElement {
-  const { title, bankName, startDate, endDate, onHandleInput, onSubmit } = props;
+  const { title, bankName, startDate, deadlineDate, onChange, onSubmit } = props;
 
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -45,7 +45,9 @@ export default function RiskAssessmentForms(props: IProps): ReactElement {
           autoComplete="title"
           autoFocus={true}
           value={title}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => onHandleInput(e, title)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            onChange(e.target.name, e.target.value)
+          }
         />
         <CustomTextField
           width="10%"
@@ -59,7 +61,9 @@ export default function RiskAssessmentForms(props: IProps): ReactElement {
           autoComplete="bankName"
           autoFocus={true}
           value={bankName}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => onHandleInput(e, bankName)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            onChange(e.target.name, e.target.value)
+          }
         />
         <CustomTextField
           width="10%"
@@ -73,7 +77,9 @@ export default function RiskAssessmentForms(props: IProps): ReactElement {
           autoComplete="startDate"
           autoFocus={true}
           value={startDate}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => onHandleInput(e, startDate)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            onChange(e.target.name, '2020-12-08T10:53:36.875Z')
+          }
         />
         <CustomTextField
           width="10%"
@@ -81,13 +87,15 @@ export default function RiskAssessmentForms(props: IProps): ReactElement {
           margin="normal"
           required={true}
           fullWidth={true}
-          id="endDate"
+          id="deadlineDate"
           label="زمان پایان"
-          name="endDate"
-          autoComplete="endDate"
+          name="deadlineDate"
+          autoComplete="deadlineDate"
           autoFocus={true}
-          value={endDate}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => onHandleInput(e, endDate)}
+          value={deadlineDate}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            onChange(e.target.name, '2020-12-08T10:53:36.875Z')
+          }
         />
         <CustomButton
           type="submit"
@@ -96,19 +104,7 @@ export default function RiskAssessmentForms(props: IProps): ReactElement {
           color="primary"
           className={classes.submit}
           label="ثبت"
-          onClickFunction={
-            (e: React.ChangeEvent<HTMLInputElement>) => onSubmit(e)
-            // dispatch(
-            //   loginRequest(
-            //     e,
-            //     {
-            //       username: userName,
-            //       password: passWord,
-            //     },
-            //     history
-            //   )
-            // )
-          }
+          onClickFunction={(e: React.ChangeEvent<HTMLInputElement>) => onSubmit(e)}
         />
       </form>
     </div>

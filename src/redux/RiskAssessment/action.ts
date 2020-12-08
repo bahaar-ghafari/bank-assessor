@@ -1,13 +1,13 @@
 import { AppAction } from '../../store/state';
 import { RiskAssessmentActionTypes } from './actionType';
 import { ActionModel } from './model';
-import { getRiskAssessmentApi } from './api';
+import { RiskAssessmentApi } from './api';
 
 //send request to server
 export const RiskAssessment = (): AppAction<ActionModel> => async (dispatch, getState) => {
   dispatch({ type: RiskAssessmentActionTypes.GetRiskAssessment });
   try {
-    const res = await getRiskAssessmentApi.getRiskAssessment();
+    const res = await RiskAssessmentApi.getRiskAssessment();
     if (res.data) {
       const data = res.data;
       dispatch({
@@ -25,10 +25,9 @@ export const OneRiskAssessment = (history: any, id: number): AppAction<ActionMod
 ) => {
   dispatch({ type: RiskAssessmentActionTypes.GetOneRiskAssessment });
   try {
-    const res = await getRiskAssessmentApi.getOneRiskAssessment(id);
+    const res = await RiskAssessmentApi.getOneRiskAssessment(id);
     if (res.data) {
       const data = res.data;
-      debugger;
       dispatch({
         type: RiskAssessmentActionTypes.GetOneRiskAssessmentSuccess,
         data: data,
@@ -40,10 +39,18 @@ export const OneRiskAssessment = (history: any, id: number): AppAction<ActionMod
   }
 };
 
-export const CreateRiskAssessment = (): AppAction<ActionModel> => async (dispatch, getState) => {
+export const CreateRiskAssessment = (
+  event: React.ChangeEvent<HTMLInputElement>,
+  data: {
+    title: string;
+    bankName: string;
+    startDate: string;
+    deadlineDate: string;
+  },
+): AppAction<ActionModel> => async (dispatch, getState) => {
   dispatch({ type: RiskAssessmentActionTypes.CreateRiskAssessment });
   try {
-    const res = await getRiskAssessmentApi.createRiskAssessment();
+    const res = await RiskAssessmentApi.createRiskAssessment(event, data);
     if (res.data) {
       const data = res.data;
       dispatch({
