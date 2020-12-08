@@ -1,5 +1,7 @@
 import { Dialog, DialogContent } from '@material-ui/core';
 import React, { ReactElement } from 'react';
+import { useSelector } from 'react-redux';
+import { IApplicationState } from '../../store/state';
 import CustomButton from '../../utils/buttons/Button';
 import CustomTextField from '../../utils/inputs/TextField';
 import CustomTypoGraphy from '../../utils/typoGraphy/TypoGraphy';
@@ -14,6 +16,7 @@ type IProps = {
 
 export default function CreateAsseessorComponentModal(props: IProps): ReactElement {
   const { open, onClose, title, onHandleChange, onHandleSubmit } = props;
+
   return (
     <Dialog maxWidth="xl" open={open} onClose={onClose}>
       <DialogContent>

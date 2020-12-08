@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RiskAssessment } from '../redux/RiskAssessment/action';
 import { IApplicationState } from '../store/state';
-import CustomTable from '../components/Tables/CustomTable';
+import AssessorsTable from '../components/Tables/AssessorsTable';
 import Loading from '../components/Loading/Loading';
 import { makeStyles } from '@material-ui/core';
 import NoData from '../components/Nodata.tsx/NoData';
@@ -46,7 +46,7 @@ export default function GetReports(): ReactElement {
 
   return (
     <>
-      {list ? <CustomTable rows={list} columns={columns} hasAsction={false} /> : <NoData />}
+      {list ? <AssessorsTable rows={list} columns={columns} hasAsction={false} /> : <NoData />}
       {currentRiskAssessment?.loading && <Loading />}
     </>
   );

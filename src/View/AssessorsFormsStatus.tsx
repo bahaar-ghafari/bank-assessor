@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RiskAssessment, DeleteRiskAssessment } from '../redux/RiskAssessment/action';
 import { GetRiskAssessmentComponent } from '../redux/RiskAssessmentComponent/action';
 import { IApplicationState } from '../store/state';
-import CustomTable from '../components/Tables/CustomTable';
+import AssessorsTable from '../components/Tables/AssessorsTable';
 import NoData from '../components/Nodata.tsx/NoData';
 import Loading from '../components/Loading/Loading';
 import { Box, makeStyles } from '@material-ui/core';
@@ -83,7 +83,7 @@ export default function ApprovedGeneralAssessmentResults(): ReactElement {
   return (
     <>
       {list && list.length ? (
-        <CustomTable rows={rows} columns={columns} hasAsction={true} />
+        <AssessorsTable rows={rows} columns={columns} hasAsction={true} />
       ) : (
         <NoData />
       )}

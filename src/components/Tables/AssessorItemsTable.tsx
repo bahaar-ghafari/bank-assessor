@@ -20,7 +20,7 @@ type IProps = {
   columns: any;
   hasAsction?: boolean;
 };
-export default function CustomTable(props: IProps) {
+export default function AssessorItemsTable(props: IProps) {
   const classes = useStyles();
   const { rows, columns, hasAsction } = props;
   return (
@@ -41,9 +41,8 @@ export default function CustomTable(props: IProps) {
               <TableCell align="center" component="th" scope="row">
                 {row.title}
               </TableCell>
-              <TableCell align="center">{row.bankName}</TableCell>
-              <TableCell align="center">{row.startDate}</TableCell>
-              <TableCell align="center">{row.deadlineDate}</TableCell>
+              <TableCell align="center">{row.bankAssessmentResponse}</TableCell>
+              <TableCell align="center">{row.generalAssessmentResponse}</TableCell>
               {hasAsction && <TableCell align="center">{row.action}</TableCell>}
             </TableRow>
           ))}

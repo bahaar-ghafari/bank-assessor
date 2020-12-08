@@ -1,5 +1,5 @@
 import { Action } from 'redux';
-import { assesmentModel, assesmentComponentModel } from '../../Models/model';
+import { assesmentModel } from '../../Models/model';
 import { RiskAssessmentActionTypes } from './actionType';
 
 export interface IRiskAssessmentState {

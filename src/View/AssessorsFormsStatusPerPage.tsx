@@ -1,11 +1,14 @@
 import { Box, makeStyles } from '@material-ui/core';
 import React, { ReactElement, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import DeleteModal from '../components/Dialogs/DeleteModal';
 import Loading from '../components/Loading/Loading';
-import { RiskAssessment, DeleteRiskAssessment } from '../redux/RiskAssessment/action';
+import NoData from '../components/Nodata.tsx/NoData';
+import AssessorItemsTable from '../components/Tables/AssessorItemsTable';
+import { DeleteRiskAssessment } from '../redux/RiskAssessment/action';
 import { CreateRiskAssessmentComponent } from '../redux/RiskAssessmentComponent/action';
+import { IApplicationState } from '../store/state';
 import CustomButton from '../utils/buttons/Button';
 import CreateAsseessorComponentModal from './components/CreateAsseessorComponentModal';
 
@@ -25,6 +28,48 @@ export default function AssessorsFormsStatusPerPage({}: Props): ReactElement {
     bankAssessmentResponse: '',
     generalAssessmentResponse: '',
   });
+
+  const currentRiskAssessment = useSelector((state: IApplicationState) => state.riskAssessment);
+  const currentRiskAssessmentComponent = useSelector(
+    (state: IApplicationState) => state.riskAssessmentComponent,
+  );
+  const renderAction = (data: IDataType) => {
+    return (
+      <Box display="flex" alignItems="center" justifyContent="center">
+        <CustomButton
+          type="submit"
+          variant="contained"
+          color="secondary"
+          label="حذف"
+          onClickFunction={() => handleDelete(data)}
+        />
+      </Box>
+    );
+  };
+  const columns = [
+    {
+      label: 'عنوان',
+      value: 'title',
+    },
+    {
+      label: 'پاسخ ارزیابان بانک',
+      value: 'bankAssessmentResponse',
+    },
+    {
+      label: 'پاسخ ارزیابان عمومی ',
+      value: 'generalAssessmentResponse',
+    },
+    {
+      label: 'عملیات',
+      value: 'actions',
+    },
+  ];
+  const list = currentRiskAssessmentComponent?.data;
+  const rows =
+    list &&
+    list.map((item) => {
+      return { ...item, action: renderAction(item) };
+    });
   const useStyles = makeStyles((theme) => ({
     submit: {
       margin: theme.spacing(0, 1, 0),
@@ -52,7 +97,7 @@ export default function AssessorsFormsStatusPerPage({}: Props): ReactElement {
   };
   return (
     <>
-      <Box>
+      <Box my={4}>
         <CustomButton
           type="submit"
           variant="contained"
@@ -77,6 +122,11 @@ export default function AssessorsFormsStatusPerPage({}: Props): ReactElement {
           onClose={() => setshowdeleteModal(false)}
           deleteFunc={deleteAssessment}
         />
+      )}
+      {rows && rows.length ? (
+        <AssessorItemsTable rows={rows} columns={columns} hasAsction={true} />
+      ) : (
+        <NoData />
       )}
       {/* {currentRiskAssessment?.loading && <Loading />} */}
     </>
