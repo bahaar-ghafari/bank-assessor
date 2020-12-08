@@ -6,6 +6,10 @@ import RiskAssessmentCard from '../components/RiskAssessment/RiskAssessmentCard'
 import { IApplicationState } from '../store/state';
 import { assesmentModel } from '../Models/model';
 import CustomTable from '../components/Tables/CustomTable';
+import NoData from '../components/Nodata.tsx/NoData';
+import Loading from '../components/Loading/Loading';
+import { Box, makeStyles } from '@material-ui/core';
+import CustomButton from '../utils/buttons/Button';
 
 //
 export default function ApprovedGeneralAssessmentResults(): ReactElement {
@@ -14,16 +18,37 @@ export default function ApprovedGeneralAssessmentResults(): ReactElement {
     // effect
     dispatch(RiskAssessment());
   }, []);
-  const currentRiskAssessment = useSelector(
-    (state: IApplicationState) => state.riskAssessment?.data,
-  );
-  const rows = [
-    { title: 'Frozen 1', bankName: 139, startDate: 6.0, deadlineDate: 24 },
-    { title: 'Frozen 2', bankName: 179, startDate: 4.0, deadlineDate: 34 },
-    { title: 'Frozen 3', bankName: 159, startDate: 2.0, deadlineDate: 14 },
-    { title: 'Frozen 4', bankName: 169, startDate: 3.0, deadlineDate: 54 },
-    { title: 'Frozen 5', bankName: 159, startDate: 6.0, deadlineDate: 24 },
-  ];
+  const useStyles = makeStyles((theme) => ({
+    submit: {
+      margin: theme.spacing(0, 1, 0),
+    },
+  }));
+  const classes = useStyles();
+
+  const currentRiskAssessment = useSelector((state: IApplicationState) => state.riskAssessment);
+  const renderAction = () => {
+    return (
+      <Box display="flex" alignItems="center" justifyContent="center">
+        <CustomButton
+          type="submit"
+          variant="contained"
+          color="primary"
+          className={classes.submit}
+          label="ویرایش"
+          onClickFunction={(e: React.ChangeEvent<HTMLInputElement>) => console.log(e)}
+        />
+        <CustomButton
+          type="submit"
+          variant="contained"
+          color="secondary"
+          className={classes.submit}
+          label="حذف"
+          onClickFunction={(e: React.ChangeEvent<HTMLInputElement>) => console.log(e)}
+        />
+      </Box>
+    );
+  };
+
   const columns = [
     {
       label: 'عنوان',
@@ -41,16 +66,21 @@ export default function ApprovedGeneralAssessmentResults(): ReactElement {
       label: 'زمان پایان',
       value: 'deadlineDate',
     },
+    {
+      label: 'عملیات',
+      value: 'action',
+    },
   ];
-  const list = currentRiskAssessment?.filter((item) => item.status === 'CREATED');
-  console.log('list', list);
+  const list = currentRiskAssessment?.data?.filter((item) => item.status === 'CREATED');
+  const rows =
+    list &&
+    list.map((item) => {
+      return { ...item, action: renderAction() };
+    });
   return (
-    <div>
-      {/* {list &&
-        list?.map((item: assesmentModel, index: number) => (
-          <RiskAssessmentCard data={item} key={index} />
-        ))} */}
-      <CustomTable rows={rows} columns={columns} />
-    </div>
+    <>
+      {list ? <CustomTable rows={rows} columns={columns} hasAsction={true} /> : <NoData />}
+      {currentRiskAssessment?.loading && <Loading />}
+    </>
   );
 }

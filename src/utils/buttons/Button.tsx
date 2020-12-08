@@ -1,11 +1,11 @@
-import React from "react";
-import { Button } from "@material-ui/core";
+import React from 'react';
+import { Button } from '@material-ui/core';
 type Iprops = {
-  variant?: "contained" | undefined;
+  variant?: 'contained' | undefined;
   fullWidth?: boolean;
-  type?: "button" | "submit" | "reset" | undefined;
-  color: "primary" | "secondary" | "inherit" | "default";
-  className: string;
+  type?: 'button' | 'submit' | 'reset' | undefined;
+  color: 'primary' | 'secondary' | 'inherit' | 'default';
+  className?: string;
   disabled?: boolean | undefined;
   href?: string;
   label: string;

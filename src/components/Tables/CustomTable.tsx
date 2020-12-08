@@ -18,12 +18,11 @@ const useStyles = makeStyles({
 type IProps = {
   rows: any;
   columns: any;
+  hasAsction?: boolean;
 };
 export default function CustomTable(props: IProps) {
   const classes = useStyles();
-  const { rows, columns } = props;
-  console.log('jj1', rows);
-  console.log('jj2', columns);
+  const { rows, columns, hasAsction } = props;
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
@@ -43,6 +42,7 @@ export default function CustomTable(props: IProps) {
               <TableCell align="center">{row.bankName}</TableCell>
               <TableCell align="center">{row.startDate}</TableCell>
               <TableCell align="center">{row.deadlineDate}</TableCell>
+              {hasAsction && <TableCell align="center">{row.action}</TableCell>}
             </TableRow>
           ))}
         </TableBody>
