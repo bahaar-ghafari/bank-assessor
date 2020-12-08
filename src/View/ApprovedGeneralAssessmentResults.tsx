@@ -23,7 +23,6 @@ export default function ApprovedGeneralAssessmentResults(): ReactElement {
   );
   return (
     <div>
-      {' '}
       {list && list.length ? (
         list?.map((item: assesmentModel, index: number) => (
           <RiskAssessmentCard data={item} key={index} />

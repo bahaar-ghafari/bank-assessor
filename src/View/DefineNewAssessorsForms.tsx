@@ -18,7 +18,7 @@ export default function DefineNewAssessorsForms(): ReactElement {
     dispatch(CreateRiskAssessment(event, Assessors));
   };
   return (
-    <div>
+    <div style={{ direction: 'rtl' }}>
       <RiskAssessmentForms
         title={Assessors.title}
         bankName={Assessors.bankName}

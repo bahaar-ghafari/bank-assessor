@@ -5,8 +5,7 @@ import { RiskAssessment } from '../redux/RiskAssessment/action';
 import { IApplicationState } from '../store/state';
 import CustomTable from '../components/Tables/CustomTable';
 import Loading from '../components/Loading/Loading';
-import { Box, makeStyles } from '@material-ui/core';
-import CustomButton from '../utils/buttons/Button';
+import { makeStyles } from '@material-ui/core';
 import NoData from '../components/Nodata.tsx/NoData';
 
 //
@@ -24,28 +23,6 @@ export default function GetReports(): ReactElement {
   const classes = useStyles();
 
   const currentRiskAssessment = useSelector((state: IApplicationState) => state.riskAssessment);
-  const renderAction = () => {
-    return (
-      <Box display="flex" alignItems="center" justifyContent="center">
-        <CustomButton
-          type="submit"
-          variant="contained"
-          color="primary"
-          className={classes.submit}
-          label="ویرایش"
-          onClickFunction={(e: React.ChangeEvent<HTMLInputElement>) => console.log(e)}
-        />
-        <CustomButton
-          type="submit"
-          variant="contained"
-          color="secondary"
-          className={classes.submit}
-          label="حذف"
-          onClickFunction={(e: React.ChangeEvent<HTMLInputElement>) => console.log(e)}
-        />
-      </Box>
-    );
-  };
 
   const columns = [
     {
