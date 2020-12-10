@@ -1,7 +1,9 @@
 import { makeStyles } from '@material-ui/core';
 import React, { ReactElement } from 'react';
+import { banksName } from '../../Constants/General';
 import CustomButton from '../../utils/buttons/Button';
 import CustomTextField from '../../utils/inputs/TextField';
+import CustomSelect from '../../utils/select/Select';
 import CustomTypoGraphy from '../../utils/typoGraphy/TypoGraphy';
 
 interface IProps {
@@ -49,7 +51,15 @@ export default function RiskAssessmentForms(props: IProps): ReactElement {
             onChange(e.target.name, e.target.value)
           }
         />
-        <CustomTextField
+        <CustomSelect
+          customValue={bankName}
+          handleChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            onChange('bankName', e.target.value)
+          }
+          list={banksName}
+          selectLabel="نام بانک"
+        />
+        {/* <CustomTextField
           width="10%"
           variant="outlined"
           margin="normal"
@@ -62,9 +72,9 @@ export default function RiskAssessmentForms(props: IProps): ReactElement {
           autoFocus={true}
           value={bankName}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            onChange(e.target.name, e.target.value)
+            onChange('bankName', e.target.value)
           }
-        />
+        /> */}
         <CustomTextField
           width="10%"
           variant="outlined"
