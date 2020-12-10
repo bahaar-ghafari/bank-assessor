@@ -58,7 +58,7 @@ export default function AssessorsFormsStatusPerPage(): ReactElement {
 
   useEffect(() => {
     dispatch(RiskAssessment());
-    dispatch(GetRiskAssessmentComponent(history, assID));
+    // dispatch(GetRiskAssessmentComponent(history, 'AssessorsFormsStatus', assID));
   }, [currentRiskAssessmentStatus, assID, dispatch, history]);
 
   const renderAction = (data: IDataType) => {
@@ -89,7 +89,7 @@ export default function AssessorsFormsStatusPerPage(): ReactElement {
     dispatch(DeleteRiskAssessment(Assessors.id));
     setLoading(true);
     setTimeout(() => {
-      dispatch(GetRiskAssessmentComponent(history, assID));
+      // dispatch(GetRiskAssessmentComponent(history, 'AssessorsFormsStatus', assID));
       setLoading(false);
     }, 200);
     setshowdeleteModal(false);
@@ -103,7 +103,7 @@ export default function AssessorsFormsStatusPerPage(): ReactElement {
     dispatch(CreateRiskAssessmentComponent(Assessors.title, assID));
     setLoading(true);
     setTimeout(() => {
-      dispatch(GetRiskAssessmentComponent(history, assID));
+      // dispatch(GetRiskAssessmentComponent(history, 'AssessorsFormsStatus', assID));
       setLoading(false);
     }, 200);
     setshowCreateModal(false);

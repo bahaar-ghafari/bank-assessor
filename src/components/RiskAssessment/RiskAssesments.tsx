@@ -32,8 +32,9 @@ interface IProps {
     | 'GENERAL_ASSESSMENT_APPROVED'
     | 'GENERAL_ASSESSMENT_NOT_APPROVED'
     | 'FINISHED';
+  historyPath: 'created' | 'submitted' | 'getResponse' | null;
 }
-export default function RiskAssesments({ assesmentStatus }: IProps): ReactElement {
+export default function RiskAssesments({ assesmentStatus, historyPath }: IProps): ReactElement {
   const dispatch = useDispatch();
   const history = useHistory();
   useEffect(() => {
@@ -50,10 +51,10 @@ export default function RiskAssesments({ assesmentStatus }: IProps): ReactElemen
   const classes = useStyles();
 
   const handleShowAssessmentItems = (data: IDataType) => {
-    dispatch(GetRiskAssessmentComponent(history, data.id));
+    historyPath && dispatch(GetRiskAssessmentComponent(history, historyPath, data.id));
   };
 
-  const columns = [
+  const tempoColumns = [
     {
       label: 'عنوان',
       value: 'title',
@@ -70,11 +71,17 @@ export default function RiskAssesments({ assesmentStatus }: IProps): ReactElemen
       label: 'زمان پایان',
       value: 'deadlineDate',
     },
-    {
-      label: 'عملیات',
-      value: 'action',
-    },
   ];
+  const columns = historyPath
+    ? [
+        ...tempoColumns,
+        {
+          label: 'عملیات',
+          value: 'action',
+        },
+      ]
+    : tempoColumns;
+
   const currentRiskAssessmentData = currentRiskAssessment?.data;
   const list =
     currentRiskAssessmentData &&
@@ -87,7 +94,11 @@ export default function RiskAssesments({ assesmentStatus }: IProps): ReactElemen
   return (
     <>
       {list && list.length ? (
-        <AssessorsTable rows={rows} columns={columns} hasAsction={true} />
+        <AssessorsTable
+          rows={rows}
+          columns={columns}
+          hasAsction={historyPath !== null ? true : false}
+        />
       ) : (
         <NoData />
       )}

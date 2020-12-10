@@ -6,6 +6,7 @@ import { RiskAssessmentApi } from './api';
 //component
 export const GetRiskAssessmentComponent = (
   history: any,
+  historyPath: string,
   id: number,
 ): AppAction<ActionModel> => async (dispatch, getState) => {
   dispatch({ type: RiskAssessmentActionTypes.GetRiskAssessmentComponent });
@@ -13,7 +14,7 @@ export const GetRiskAssessmentComponent = (
     const res = await RiskAssessmentApi.getRiskAssessmentComponent(id);
     if (res.data) {
       if (history) {
-        history.replace(`/AssessorsFormsStatus/${id}`);
+        history.replace(`/${historyPath}/${id}`);
       }
       const data = res.data;
       dispatch({

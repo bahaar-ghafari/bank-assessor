@@ -1,7 +1,7 @@
-import { makeStyles } from "@material-ui/core";
-import React, { ReactElement } from "react";
-import CustomTextField from "../../utils/inputs/TextField";
-import CustomTypoGraphy from "../../utils/typoGraphy/TypoGraphy";
+import { makeStyles } from '@material-ui/core';
+import React, { ReactElement } from 'react';
+import CustomTextField from '../../utils/inputs/TextField';
+import CustomTypoGraphy from '../../utils/typoGraphy/TypoGraphy';
 
 interface IProps {
   title: string;
@@ -15,10 +15,10 @@ export default function RiskAssessmentFactors(props: IProps): ReactElement {
 
   const useStyles = makeStyles((theme) => ({
     root: {
-      height: "100vh",
+      height: '100vh',
     },
     form: {
-      width: "100%", // Fix IE 11 issue.
+      width: '100%', // Fix IE 11 issue.
       marginTop: theme.spacing(1),
     },
     submit: {
@@ -42,9 +42,7 @@ export default function RiskAssessmentFactors(props: IProps): ReactElement {
           autoComplete="title"
           autoFocus={true}
           value={title}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            onHandleInput(e, title)
-          }
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => onHandleInput(e, title)}
         />
         <CustomTextField
           width="10%"
@@ -58,9 +56,7 @@ export default function RiskAssessmentFactors(props: IProps): ReactElement {
           autoComplete="bankRespose"
           autoFocus={true}
           value={bankRespose}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            onHandleInput(e, bankRespose)
-          }
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => onHandleInput(e, bankRespose)}
         />
         <CustomTextField
           width="10%"
@@ -74,9 +70,7 @@ export default function RiskAssessmentFactors(props: IProps): ReactElement {
           autoComplete="generalRespose"
           autoFocus={true}
           value={generalRespose}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            onHandleInput(e, generalRespose)
-          }
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => onHandleInput(e, generalRespose)}
         />
       </form>
     </div>

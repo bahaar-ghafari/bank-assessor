@@ -7,13 +7,6 @@ import AssignmentIcon from '@material-ui/icons/Assignment';
 
 export const sideBarList = [
   {
-    id: 3,
-    name: 'بررسی پاسخ های ارزیابان بانک', //bank-assesst - approve not approve
-    icon: <BarChartIcon />,
-    rout: 'CheckBankAssessorSResponse',
-  },
-  { id: 4, name: 'اخذ گزارشات', icon: <AssignmentIcon />, rout: 'GetReports' }, //bedune filter
-  {
     id: 5,
     name: 'فرم ارزیابی های نیازمند بررسی', //submited /approve /not approve
     icon: <LayersIcon />,
