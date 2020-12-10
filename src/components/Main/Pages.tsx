@@ -149,7 +149,14 @@ export default function Pages(props: any) {
         return bank_sideBarItems;
         // eslint-disable-next-line no-unreachable
         break;
-
+      case 'BANK_MELLAT':
+        return bank_sideBarItems;
+        // eslint-disable-next-line no-unreachable
+        break;
+      case 'BANK_MASKAN':
+        return bank_sideBarItems;
+        // eslint-disable-next-line no-unreachable
+        break;
       default:
         return sideBarList;
         // eslint-disable-next-line no-unreachable

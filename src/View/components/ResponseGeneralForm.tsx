@@ -31,8 +31,8 @@ export default function ResponseForm(): ReactElement {
         Response: 'res' + index,
       };
     });
-    dispatch(sendResponse(assID, 'bank-response', data));
-    dispatch(SetRiskAssessmentApprove('bank-assessed', assID));
+    dispatch(sendResponse(assID, 'general-response', data));
+    dispatch(SetRiskAssessmentApprove('general-assessed', assID));
   };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e);

@@ -5,12 +5,12 @@ import { useHistory } from 'react-router-dom';
 import NoData from '../../components/Nodata.tsx/NoData';
 import { RiskAssessment } from '../../redux/RiskAssessment/action';
 import { SetRiskAssessmentApprove } from '../../redux/RiskAssessmentApproveDenied/action';
-import { GetRiskAssessmentComponent } from '../../redux/RiskAssessmentComponent/action';
 import { IApplicationState } from '../../store/state';
 import CustomButton from '../../utils/buttons/Button';
+import { GetRiskAssessmentComponent } from '../../redux/RiskAssessmentComponent/action';
 import AssessorItems from './AssessorItems';
 
-export default function SubmittedAssessorsPage(): ReactElement {
+export default function CheckBankResponse(): ReactElement {
   const currentRiskAssessment = useSelector(
     (state: IApplicationState) => state.riskAssessment?.data,
   );
@@ -36,21 +36,21 @@ export default function SubmittedAssessorsPage(): ReactElement {
 
   useEffect(() => {
     dispatch(RiskAssessment());
-    dispatch(GetRiskAssessmentComponent(history, 'submitted', assID));
+    dispatch(GetRiskAssessmentComponent(history, 'chechBankResponse', assID));
   }, [currentRiskAssessmentStatus, assID, dispatch, history]);
 
   const list = currentRiskAssessmentComponent?.data;
   const assessorItemsData = list?.map((item) => {
     return {
-      key: 'عنوان',
-      value: item.title,
+      key: 'پاسخ بانک',
+      value: item.bankAssessmentResponse,
     };
   });
   const handleApprove = () => {
-    dispatch(SetRiskAssessmentApprove('start', assID));
+    dispatch(SetRiskAssessmentApprove('bank-assessed-approved', assID));
   };
   const handleDeny = () => {
-    dispatch(SetRiskAssessmentApprove('decline-by-committee', assID));
+    dispatch(SetRiskAssessmentApprove('bank-assessed-not-approved', assID));
   };
   return (
     <>

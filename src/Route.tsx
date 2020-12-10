@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import DefineNewAssessorsForms from './View/DefineNewAssessorsForms';
 import AssessorsFormsStatus from './View/AssessorsFormsStatus';
-import AssessorsFormsStatusPerPage from './View/components/AssessorsFormsStatusPerPage';
+import AssessorsFormsStatusPerPage from './View/components/SubmittedAssessorsPage';
 import CheckBankAssessorSResponse from './View/CheckBankAssessorSResponse';
 import GetReports from './View/GetReports';
 import NeedsCheckAssessmentForms from './View/NeedsCheckAssessmentForms';
@@ -16,12 +16,13 @@ import ApprovedAssessment from './View/ApprovedAssessment';
 import NotFoundComponent from './View/NotFoundComponent';
 import SubmittedAssessorsPage from './View/components/SubmittedAssessorsPage';
 import ResponseForm from './View/components/ResponseForm';
-
+import chechBankResponse from './View/components/CheckBankResponse';
 function PrivateRout() {
   return (
     <Switch>
       <Route path="/created/:id" component={AssessorsFormsStatusPerPage} />
       <Route path="/submitted/:id" component={SubmittedAssessorsPage} />
+      <Route path="/chechBankResponse/:id" component={chechBankResponse} />
       <Route path="/getResponse/:id" component={ResponseForm} />
       {/* risk_management_assessor_sideBarItems */}
       <Route path="/DefineNewAssessorsForms" component={DefineNewAssessorsForms} />

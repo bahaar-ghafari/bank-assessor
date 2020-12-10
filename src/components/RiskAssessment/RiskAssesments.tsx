@@ -32,7 +32,13 @@ interface IProps {
     | 'GENERAL_ASSESSMENT_APPROVED'
     | 'GENERAL_ASSESSMENT_NOT_APPROVED'
     | 'FINISHED';
-  historyPath: 'created' | 'submitted' | 'getResponse' | null;
+  historyPath:
+    | 'created'
+    | 'submitted'
+    | 'getResponse'
+    | 'getGeneralResponse'
+    | 'chechBankResponse'
+    | null;
 }
 export default function RiskAssesments({ assesmentStatus, historyPath }: IProps): ReactElement {
   const dispatch = useDispatch();

@@ -8,51 +8,9 @@ import AssignmentIcon from '@material-ui/icons/Assignment';
 export const sideBarList = [
   {
     id: 5,
-    name: 'فرم ارزیابی های نیازمند بررسی', //submited /approve /not approve
+    name: 'فرم ارزیابی های نیازمند بررسی',
     icon: <LayersIcon />,
     rout: 'NeedsCheckAssessmentForms',
-  },
-  {
-    id: 6,
-    name: 'نتایج ارزیابی های نیازمند بررسی', //general assesst /approve /not approve
-    icon: <BarChartIcon />,
-    rout: 'NeedsCheckAssessment',
-  },
-  {
-    id: 7,
-    name: 'نتایج ارزیابی عمومی بررسی شده', //general approve + not approve
-    icon: <AssignmentIcon />,
-    rout: 'approvedGeneralAssessmentResults',
-  },
-  {
-    id: 8,
-    name: 'ارزیابی در حال انجام', //bank assesst aprove /"clickable"
-    icon: <LayersIcon />,
-    rout: 'OngoingGeneralAssessment',
-  },
-  {
-    id: 9,
-    name: 'ارزیابی تایید شده', //'clickable lable =>  general assessment approve
-    icon: <AssignmentIcon />,
-    rout: 'approvedGeneralAssessment',
-  },
-  {
-    id: 10,
-    name: 'ارزیابی در حال انجام', //started "clickable"
-    icon: <LayersIcon />,
-    rout: 'OngoingAssessment',
-  },
-  {
-    id: 11,
-    name: 'ارزیابی نیازمند اصلاح', //bank assesst not approve
-    icon: <BarChartIcon />,
-    rout: 'NeedsCorrectionAssessment',
-  },
-  {
-    id: 12,
-    name: 'ارزیابی تایید شده', //clickable lable =>  bank assessment approve
-    icon: <AssignmentIcon />,
-    rout: 'approvedAssessment',
   },
 ];
 export const risk_management_assessor_sideBarItems = [
