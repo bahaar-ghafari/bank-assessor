@@ -1,11 +1,5 @@
 import { Action } from 'redux';
-import { assesmentComponentModel } from '../../Models/model';
 import { RiskAssessmentActionTypes } from './actionType';
-
-export interface IRiskAssessmentComponentState {
-  data: assesmentComponentModel[];
-  loading: boolean;
-}
 
 //component get
 interface IRiskAssessmentApprove extends Action<string> {

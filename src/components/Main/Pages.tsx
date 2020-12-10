@@ -1,18 +1,8 @@
 /* eslint-disable react/jsx-no-undef */
 import React, { useEffect } from 'react';
-import {
-  CssBaseline,
-  AppBar,
-  Toolbar,
-  IconButton,
-  Drawer,
-  Divider,
-  Container,
-} from '@material-ui/core';
+import { CssBaseline, IconButton, Drawer, Divider, Container } from '@material-ui/core';
 // icons
-import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 // style
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
@@ -30,13 +20,13 @@ import {
   general_assessor_sideBarItems,
   risk_management_assessor_sideBarItems,
 } from '../../Constants/sideBarList';
-import { logOutRequest } from '../../redux/Auth/action';
 
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { SIDE_BAR_WIDTH, DASHBOARD_NAME } from '../../Constants/General';
-import PrivateRout from '../../View/Route';
+import PrivateRout from '../../Route';
 import { theme } from '../../Constants/Theme';
+import Header from '../Header/Header';
 
 const drawerWidth = SIDE_BAR_WIDTH;
 const useStyles = makeStyles((theme) => ({
@@ -171,7 +161,7 @@ export default function Pages(props: any) {
       <div dir="rtl">
         <div className={classes.root}>
           <CssBaseline />
-          <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
+          {/* <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
             <Toolbar className={classes.toolbar}>
               <IconButton
                 edge="start"
@@ -187,7 +177,14 @@ export default function Pages(props: any) {
                 {currentUser?.username}
               </IconButton>
             </Toolbar>
-          </AppBar>
+          </AppBar> */}
+          <Header
+            open={open}
+            handleDrawerOpen={handleDrawerOpen}
+            classes={classes}
+            currentUser={currentUser}
+            history={history}
+          />
           <Drawer
             variant="permanent"
             classes={{

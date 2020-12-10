@@ -30,9 +30,8 @@ export const RiskAssessmentComponentReducer: Reducer<any> = (state: any = null, 
     }
     case RiskAssessmentActionTypes.CreateRiskAssessmentComponentSuccess: {
       return {
-        ...state.riskAssessment,
+        ...state.riskAssessment.data,
         loading: false,
-        data: action.data,
       } as any;
     }
     case RiskAssessmentActionTypes.CreateRiskAssessmentComponentFail: {

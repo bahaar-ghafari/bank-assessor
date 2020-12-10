@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Login from './components/auth/Login';
-import Pages from './components/Tables/Pages';
+import Pages from './components/Main/Pages';
 import { IApplicationState } from './store/state';
 
 function App() {

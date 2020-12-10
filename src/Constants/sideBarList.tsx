@@ -7,18 +7,6 @@ import AssignmentIcon from '@material-ui/icons/Assignment';
 
 export const sideBarList = [
   {
-    id: 1,
-    name: 'تعریف فرم ارزیابی جدید',
-    icon: <LayersIcon />,
-    rout: 'DefineNewAssessorsForms',
-  },
-  {
-    id: 2,
-    name: 'وضعیت فرم های ارزیابی',
-    icon: <DashboardIcon />,
-    rout: 'AssessorsFormsStatus',
-  },
-  {
     id: 3,
     name: 'بررسی پاسخ های ارزیابان بانک', //bank-assesst - approve not approve
     icon: <BarChartIcon />,

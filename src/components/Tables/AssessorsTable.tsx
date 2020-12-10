@@ -19,10 +19,11 @@ type IProps = {
   rows: any;
   columns: any;
   hasAsction?: boolean;
+  hasStatus?: boolean;
 };
 export default function AssessorsTable(props: IProps) {
   const classes = useStyles();
-  const { rows, columns, hasAsction } = props;
+  const { rows, columns, hasAsction, hasStatus } = props;
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
@@ -42,6 +43,7 @@ export default function AssessorsTable(props: IProps) {
                 {row.title}
               </TableCell>
               <TableCell align="center">{row.bankName}</TableCell>
+              {hasStatus && <TableCell align="center">{row.status}</TableCell>}
               <TableCell align="center">{row.startDate}</TableCell>
               <TableCell align="center">{row.deadlineDate}</TableCell>
               {hasAsction && <TableCell align="center">{row.action}</TableCell>}

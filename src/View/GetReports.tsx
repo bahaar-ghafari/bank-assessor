@@ -15,12 +15,6 @@ export default function GetReports(): ReactElement {
     // effect
     dispatch(RiskAssessment());
   }, []);
-  const useStyles = makeStyles((theme) => ({
-    submit: {
-      margin: theme.spacing(0, 1, 0),
-    },
-  }));
-  const classes = useStyles();
 
   const currentRiskAssessment = useSelector((state: IApplicationState) => state.riskAssessment);
 
@@ -32,6 +26,10 @@ export default function GetReports(): ReactElement {
     {
       label: 'نام بانک',
       value: 'bankName',
+    },
+    {
+      label: 'وضعیت',
+      value: 'status',
     },
     {
       label: 'زمان شروع',
@@ -46,7 +44,11 @@ export default function GetReports(): ReactElement {
 
   return (
     <>
-      {list ? <AssessorsTable rows={list} columns={columns} hasAsction={false} /> : <NoData />}
+      {list ? (
+        <AssessorsTable rows={list} columns={columns} hasAsction={false} hasStatus={true} />
+      ) : (
+        <NoData />
+      )}
       {currentRiskAssessment?.loading && <Loading />}
     </>
   );

@@ -23,6 +23,6 @@ export const RiskAssessmentApi = {
     return axios.get(RiskAssessmentUrl + `/risk-assessment/${id}`);
   },
   DeleteRiskAssessment: async (id: number) => {
-    return axios.delete(RiskAssessmentUrl + `/risk-assessment/${id}`);
+    return axios.delete(RiskAssessmentUrl + `/assessment-component/${id}`);
   },
 };

@@ -16,6 +16,12 @@ export default function DefineNewAssessorsForms(): ReactElement {
   };
   const HandleSubmit = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(CreateRiskAssessment(event, Assessors));
+    setAssessors({
+      title: '',
+      bankName: '',
+      startDate: '',
+      deadlineDate: '',
+    });
   };
   return (
     <div style={{ direction: 'rtl' }}>
