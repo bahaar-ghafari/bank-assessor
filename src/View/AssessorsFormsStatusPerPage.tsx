@@ -1,25 +1,25 @@
 import { Box, makeStyles } from '@material-ui/core';
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import DeleteModal from '../components/Dialogs/DeleteModal';
 import Loading from '../components/Loading/Loading';
 import NoData from '../components/Nodata.tsx/NoData';
 import AssessorItemsTable from '../components/Tables/AssessorItemsTable';
-import { DeleteRiskAssessment } from '../redux/RiskAssessment/action';
+import { DeleteRiskAssessment, RiskAssessment } from '../redux/RiskAssessment/action';
+import { SetRiskAssessmentApprove } from '../redux/RiskAssessmentApproveDenied/action';
 import { CreateRiskAssessmentComponent } from '../redux/RiskAssessmentComponent/action';
 import { IApplicationState } from '../store/state';
 import CustomButton from '../utils/buttons/Button';
 import CreateAsseessorComponentModal from './components/CreateAsseessorComponentModal';
 
-interface Props {}
 interface IDataType {
   id: number;
   title: string;
   bankAssessmentResponse: string;
   generalAssessmentResponse: string;
 }
-export default function AssessorsFormsStatusPerPage({}: Props): ReactElement {
+export default function AssessorsFormsStatusPerPage(): ReactElement {
   const [showdeleteModal, setshowdeleteModal] = useState(false);
   const [showCreateModal, setshowCreateModal] = useState(false);
   const [Assessors, setAssessors] = useState({
@@ -29,10 +29,30 @@ export default function AssessorsFormsStatusPerPage({}: Props): ReactElement {
     generalAssessmentResponse: '',
   });
 
-  const currentRiskAssessment = useSelector((state: IApplicationState) => state.riskAssessment);
+  const currentRiskAssessment = useSelector(
+    (state: IApplicationState) => state.riskAssessment?.data,
+  );
+
   const currentRiskAssessmentComponent = useSelector(
     (state: IApplicationState) => state.riskAssessmentComponent,
   );
+
+  const useStyles = makeStyles((theme) => ({
+    submit: {
+      margin: theme.spacing(0, 1, 0),
+    },
+  }));
+  const classes = useStyles();
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  useEffect(() => {
+    dispatch(RiskAssessment());
+  }, []);
+
+  const assID = parseInt(history.location.pathname.split('/')[2]);
+  const currentRiskAssessmentStatus =
+    currentRiskAssessment && currentRiskAssessment.find((item) => item.id === assID)?.status;
   const renderAction = (data: IDataType) => {
     return (
       <Box display="flex" alignItems="center" justifyContent="center">
@@ -66,18 +86,12 @@ export default function AssessorsFormsStatusPerPage({}: Props): ReactElement {
   ];
   const list = currentRiskAssessmentComponent?.data;
   const rows =
-    list &&
-    list.map((item) => {
-      return { ...item, action: renderAction(item) };
-    });
-  const useStyles = makeStyles((theme) => ({
-    submit: {
-      margin: theme.spacing(0, 1, 0),
-    },
-  }));
-  const classes = useStyles();
-  const dispatch = useDispatch();
-  const history = useHistory();
+    currentRiskAssessmentStatus === 'CREATED'
+      ? list &&
+        list.map((item) => {
+          return { ...item, action: renderAction(item) };
+        })
+      : list;
 
   const handleDelete = (data: IDataType) => {
     setshowdeleteModal(true);
@@ -91,9 +105,16 @@ export default function AssessorsFormsStatusPerPage({}: Props): ReactElement {
   };
   const handleSubmit = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
-    const assID = history.location.pathname.split('/')[2];
-    dispatch(CreateRiskAssessmentComponent(Assessors.title, parseInt(assID)));
+
+    dispatch(CreateRiskAssessmentComponent(Assessors.title, assID));
     setshowCreateModal(false);
+  };
+  const handleApprove = (event: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(SetRiskAssessmentApprove('general-assessed-approved', assID));
+  };
+
+  const handleDeny = (event: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(SetRiskAssessmentApprove('general-assessed-not-approved', assID));
   };
   return (
     <>
@@ -105,6 +126,22 @@ export default function AssessorsFormsStatusPerPage({}: Props): ReactElement {
           className={classes.submit}
           label="افزودن مولفه ارزیابی"
           onClickFunction={() => setshowCreateModal(true)}
+        />
+        <CustomButton
+          type="submit"
+          variant="contained"
+          color="default"
+          className={classes.submit}
+          label="تایید مولفه های ارزیابی"
+          onClickFunction={(event: React.ChangeEvent<HTMLInputElement>) => handleApprove(event)}
+        />
+        <CustomButton
+          type="submit"
+          variant="contained"
+          color="secondary"
+          className={classes.submit}
+          label="ردکردن مولفه های ارزیابی"
+          onClickFunction={(event: React.ChangeEvent<HTMLInputElement>) => handleDeny(event)}
         />
       </Box>
       {showCreateModal && (
