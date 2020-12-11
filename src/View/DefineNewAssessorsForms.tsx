@@ -8,19 +8,23 @@ export default function DefineNewAssessorsForms(): ReactElement {
   const [Assessors, setAssessors] = useState({
     title: '',
     bankName: '',
-    startDate: '',
-    deadlineDate: '',
+    startDate: new Date(),
+    deadlineDate: new Date(),
   });
   const handleChange = (name: string, value: string) => {
     setAssessors({ ...Assessors, [name]: value });
+  };
+  const handleChangeDate = (name: string, date: any) => {
+    // const date = event?.value?._d;
+    console.log('dateeee', name, date);
   };
   const HandleSubmit = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(CreateRiskAssessment(event, Assessors));
     setAssessors({
       title: '',
       bankName: '',
-      startDate: '',
-      deadlineDate: '',
+      startDate: new Date(),
+      deadlineDate: new Date(),
     });
   };
   return (
@@ -31,6 +35,7 @@ export default function DefineNewAssessorsForms(): ReactElement {
         startDate={Assessors.startDate}
         deadlineDate={Assessors.deadlineDate}
         onChange={handleChange}
+        onChangeDate={handleChangeDate}
         onSubmit={(event: React.ChangeEvent<HTMLInputElement>) => HandleSubmit(event)}
       />
     </div>

@@ -5,18 +5,21 @@ import CustomButton from '../../utils/buttons/Button';
 import CustomTextField from '../../utils/inputs/TextField';
 import CustomSelect from '../../utils/select/Select';
 import CustomTypoGraphy from '../../utils/typoGraphy/TypoGraphy';
+import { getDate } from '../../Helpers/changeTimeFormat';
+import CustomDatePicker from '../../utils/DatePicker/DatePicker';
 
 interface IProps {
   title: string;
   bankName: string;
-  startDate: string;
-  deadlineDate: string;
+  startDate: any;
+  deadlineDate: any;
   onChange: any;
+  onChangeDate: any;
   onSubmit: any;
 }
 
 export default function RiskAssessmentForms(props: IProps): ReactElement {
-  const { title, bankName, startDate, deadlineDate, onChange, onSubmit } = props;
+  const { title, bankName, startDate, deadlineDate, onChange, onChangeDate, onSubmit } = props;
 
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -59,53 +62,15 @@ export default function RiskAssessmentForms(props: IProps): ReactElement {
           list={banksName}
           selectLabel="نام بانک"
         />
-        {/* <CustomTextField
-          width="10%"
-          variant="outlined"
-          margin="normal"
-          required={true}
-          fullWidth={true}
-          id="bankName"
-          label="نام بانک"
-          name="bankName"
-          autoComplete="bankName"
-          autoFocus={true}
-          value={bankName}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            onChange('bankName', e.target.value)
-          }
-        /> */}
-        <CustomTextField
-          width="10%"
-          variant="outlined"
-          margin="normal"
-          required={true}
-          fullWidth={true}
-          id="startDate"
-          label="زمان شروع"
-          name="startDate"
-          autoComplete="startDate"
-          autoFocus={true}
-          value={startDate}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            onChange(e.target.name, '2020-12-08T10:53:36.875Z')
-          }
+        <CustomDatePicker
+          customLabel="زمان شروع"
+          selectedValue={startDate}
+          handleSubmit={(date: Date) => onChangeDate('startDate', date)}
         />
-        <CustomTextField
-          width="10%"
-          variant="outlined"
-          margin="normal"
-          required={true}
-          fullWidth={true}
-          id="deadlineDate"
-          label="زمان پایان"
-          name="deadlineDate"
-          autoComplete="deadlineDate"
-          autoFocus={true}
-          value={deadlineDate}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            onChange(e.target.name, '2020-12-08T10:53:36.875Z')
-          }
+        <CustomDatePicker
+          customLabel="زمان پایان"
+          selectedValue={deadlineDate}
+          handleSubmit={(date: Date) => onChangeDate('deadlineDate', date)}
         />
         <CustomButton
           type="submit"

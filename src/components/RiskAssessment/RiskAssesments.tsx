@@ -14,8 +14,8 @@ import { HandleViewElement } from '../../Helpers/ViewElement';
 interface IDataType {
   title: string;
   bankName: string;
-  startDate: string;
-  deadlineDate: string;
+  startDate: Date;
+  deadlineDate: Date;
   id: number;
 }
 interface IProps {

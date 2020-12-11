@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import App from './App';
 // import reportWebVitals from "./reportWebVitals";
 import { Provider } from 'react-redux';
-// import axios from "./AxiosConfig";
 import configureStore from './store/configStore';
 import rtl from 'jss-rtl';
 import { create } from 'jss';

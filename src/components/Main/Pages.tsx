@@ -27,6 +27,7 @@ import { SIDE_BAR_WIDTH, DASHBOARD_NAME } from '../../Constants/General';
 import PrivateRout from '../../Route';
 import { theme } from '../../Constants/Theme';
 import Header from '../Header/Header';
+import '../../styles.scss';
 
 const drawerWidth = SIDE_BAR_WIDTH;
 const useStyles = makeStyles((theme) => ({
@@ -165,7 +166,7 @@ export default function Pages(props: any) {
   };
   return (
     <ThemeProvider theme={theme}>
-      <div dir="rtl">
+      <div dir="rtl" className="body">
         <div className={classes.root}>
           <CssBaseline />
           {/* <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>

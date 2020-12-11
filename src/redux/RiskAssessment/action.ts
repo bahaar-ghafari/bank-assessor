@@ -45,8 +45,8 @@ export const CreateRiskAssessment = (
   data: {
     title: string;
     bankName: string;
-    startDate: string;
-    deadlineDate: string;
+    startDate: Date;
+    deadlineDate: Date;
   },
 ): AppAction<ActionModel> => async (dispatch, getState) => {
   dispatch({ type: RiskAssessmentActionTypes.CreateRiskAssessment });
