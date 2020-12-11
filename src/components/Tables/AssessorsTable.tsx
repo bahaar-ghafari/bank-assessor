@@ -9,6 +9,7 @@ import {
   TableRow,
   Paper,
 } from '@material-ui/core';
+import { getDate } from '../../Helpers/changeTimeFormat';
 
 const useStyles = makeStyles({
   table: {
@@ -42,10 +43,19 @@ export default function AssessorsTable(props: IProps) {
               <TableCell align="center" component="th" scope="row">
                 {row.title}
               </TableCell>
-              <TableCell align="center">{row.bankName}</TableCell>
+              {/* <TableCell align="center">{KeyToLabel(row.bankName)}</TableCell> */}
+              <TableCell align="center">
+                {row.bankName === 'BANK_MELLI'
+                  ? 'بانک ملی'
+                  : row.bankName === 'BANK_MASKAN'
+                  ? 'بانک مسکن'
+                  : row.bankName === 'BANK_MELLAT'
+                  ? 'بانک ملت'
+                  : row.bankName + 'بانک'}
+              </TableCell>
               {hasStatus && <TableCell align="center">{row.status}</TableCell>}
-              <TableCell align="center">{row.startDate}</TableCell>
-              <TableCell align="center">{row.deadlineDate}</TableCell>
+              <TableCell align="center">{getDate(row.startDate)}</TableCell>
+              <TableCell align="center">{getDate(row.deadlineDate)}</TableCell>
               {hasAsction && <TableCell align="center">{row.action}</TableCell>}
             </TableRow>
           ))}

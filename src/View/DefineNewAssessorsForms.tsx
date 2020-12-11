@@ -1,31 +1,27 @@
 import React, { ReactElement, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import RiskAssessmentForms from '../components/RiskAssessment/RiskAssessmentForm';
+import RiskAssessmentForms from './components/RiskAssessmentForm';
 import { CreateRiskAssessment } from '../redux/RiskAssessment/action';
-
+import moment from 'moment';
 export default function DefineNewAssessorsForms(): ReactElement {
   const dispatch = useDispatch();
-  const [Assessors, setAssessors] = useState({
+  const initial = {
     title: '',
     bankName: '',
-    startDate: new Date(),
-    deadlineDate: new Date(),
-  });
-  const handleChange = (name: string, value: string) => {
-    setAssessors({ ...Assessors, [name]: value });
+    startDate: moment(),
+    deadlineDate: moment(),
   };
-  const handleChangeDate = (name: string, date: any) => {
-    // const date = event?.value?._d;
-    console.log('dateeee', name, date);
+  const [Assessors, setAssessors] = useState(initial);
+  const handleChange = (name: string, value: any) => {
+    if (['startDate', 'deadlineDate'].includes(name)) {
+      setAssessors({ ...Assessors, [name]: value?._d });
+    } else {
+      setAssessors({ ...Assessors, [name]: value });
+    }
   };
-  const HandleSubmit = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSubmit = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(CreateRiskAssessment(event, Assessors));
-    setAssessors({
-      title: '',
-      bankName: '',
-      startDate: new Date(),
-      deadlineDate: new Date(),
-    });
+    setAssessors(initial);
   };
   return (
     <div style={{ direction: 'rtl' }}>
@@ -35,8 +31,7 @@ export default function DefineNewAssessorsForms(): ReactElement {
         startDate={Assessors.startDate}
         deadlineDate={Assessors.deadlineDate}
         onChange={handleChange}
-        onChangeDate={handleChangeDate}
-        onSubmit={(event: React.ChangeEvent<HTMLInputElement>) => HandleSubmit(event)}
+        onSubmit={(event: React.ChangeEvent<HTMLInputElement>) => handleSubmit(event)}
       />
     </div>
   );

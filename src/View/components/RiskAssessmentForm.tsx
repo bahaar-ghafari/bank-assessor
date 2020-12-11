@@ -14,12 +14,11 @@ interface IProps {
   startDate: any;
   deadlineDate: any;
   onChange: any;
-  onChangeDate: any;
   onSubmit: any;
 }
 
 export default function RiskAssessmentForms(props: IProps): ReactElement {
-  const { title, bankName, startDate, deadlineDate, onChange, onChangeDate, onSubmit } = props;
+  const { title, bankName, startDate, deadlineDate, onChange, onSubmit } = props;
 
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -65,12 +64,12 @@ export default function RiskAssessmentForms(props: IProps): ReactElement {
         <CustomDatePicker
           customLabel="زمان شروع"
           selectedValue={startDate}
-          handleSubmit={(date: Date) => onChangeDate('startDate', date)}
+          onchandleDate={(date: any) => onChange('startDate', date)}
         />
         <CustomDatePicker
           customLabel="زمان پایان"
           selectedValue={deadlineDate}
-          handleSubmit={(date: Date) => onChangeDate('deadlineDate', date)}
+          onchandleDate={(date: any) => onChange('deadlineDate', date)}
         />
         <CustomButton
           type="submit"

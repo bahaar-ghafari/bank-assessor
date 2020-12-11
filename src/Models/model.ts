@@ -1,8 +1,8 @@
 export interface assesmentModel {
   bankName: string;
-  deadlineDate: Date;
+  deadlineDate: any;
   id: number;
-  startDate: Date;
+  startDate: any;
   status:
     | 'CREATED'
     | 'SUBMITTED'

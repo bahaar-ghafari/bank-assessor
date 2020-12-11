@@ -12,8 +12,8 @@ export const RiskAssessmentApi = {
     data: {
       title: string;
       bankName: string;
-      startDate: Date;
-      deadlineDate: Date;
+      startDate: any;
+      deadlineDate: any;
     },
   ) => {
     event.preventDefault();

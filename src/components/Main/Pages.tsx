@@ -113,7 +113,7 @@ export default function Pages(props: any) {
   const classes = useStyles();
   const currentUser: {
     username: string;
-    role: string | null;
+    role: string | '';
     authorized: boolean;
   } = useSelector((state: IApplicationState) => state.auth);
   //user

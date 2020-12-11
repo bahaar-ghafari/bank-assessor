@@ -1,16 +1,16 @@
 import React, { ReactElement } from 'react';
 import { Box } from '@material-ui/core';
-import { DatePickerPure } from './DatePickerPure';
+import { DateTimePickerKavan } from './DateTimePickerKavan';
 interface IProps {
   customLabel: string;
   selectedValue: any;
-  handleSubmit: any;
+  onchandleDate: any;
 }
 
 export default function CustomDatePicker({
   customLabel,
   selectedValue,
-  handleSubmit,
+  onchandleDate,
 }: IProps): ReactElement {
   return (
     <>
@@ -19,8 +19,12 @@ export default function CustomDatePicker({
           {customLabel}
         </Box>
         <Box className="DatePickerBox">
-          {/* <DatePicker onClickSubmitButton={handleSubmit} value={selectedValue} /> */}
-          <DatePickerPure />
+          {/* <DatePickerPure selectedValue={selectedValue} onhandleChange={onchandleDate} /> */}
+          <DateTimePickerKavan
+            exacttimeDate={selectedValue}
+            handleDateChange={onchandleDate}
+            labelID={customLabel}
+          />
         </Box>
       </Box>
     </>
