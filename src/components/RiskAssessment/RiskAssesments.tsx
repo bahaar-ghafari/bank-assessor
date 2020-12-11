@@ -57,7 +57,6 @@ export default function RiskAssesments({ assesmentStatus, historyPath }: IProps)
   const classes = useStyles();
 
   const handleShowAssessmentItems = (data: IDataType) => {
-    debugger;
     historyPath && dispatch(GetRiskAssessmentComponent(history, historyPath, data.id));
   };
 
