@@ -8,67 +8,65 @@ import { GetRiskAssessmentComponent } from '../../redux/RiskAssessmentComponent/
 import { sendResponse } from '../../redux/RiskAssessmentResponse/action';
 import { IApplicationState } from '../../store/state';
 import CustomButton from '../../utils/buttons/Button';
-import CustomTextField from '../../utils/inputs/TextField';
+import RangePicker from '../../utils/inputs/RangePicker';
 
 export default function ResponseForm(): ReactElement {
   const assessmentElements = useSelector(
     (state: IApplicationState) => state.riskAssessmentComponent,
   );
   const list = assessmentElements?.data;
-  const initialState = list && list.map((item) => 'محل نوشتن پاسخ');
+  const initialState = list && list.map((item) => 80);
   const [response, setresponse] = useState(initialState);
   const dispatch = useDispatch();
   const history = useHistory();
+  const type = history.location.pathname.split('/')[1].includes('getGeneralResponse');
+  const pathhistry = type ? 'getGeneralResponse' : 'getResponse';
+  const restype = type ? 'general-response' : 'bank-response';
+  const resApprType = type ? 'general-assessed' : 'bank-assessed';
+  const parentRoute = type ? 'OngoingGeneralAssessment' : '/OngoingAssessment';
   const assID = parseInt(history.location.pathname.split('/')[2]);
   useEffect(() => {
-    dispatch(GetRiskAssessmentComponent(history, 'getResponse', assID));
+    dispatch(GetRiskAssessmentComponent(history, pathhistry, assID));
   }, []);
 
   const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    const data = list.map((item, index: number) => {
-      return {
-        componentId: item.id,
-        response: response[index],
-      };
-    });
-    dispatch(sendResponse(assID, 'bank-response', data));
-    dispatch(SetRiskAssessmentApprove('bank-assessed', assID));
-    setresponse(initialState);
+    if (response && response.length > 0) {
+      e.preventDefault();
+      const data = list.map((item, index: number) => {
+        return {
+          componentId: item.id,
+          response: response[index],
+        };
+      });
+      dispatch(sendResponse(assID, restype, data));
+      dispatch(SetRiskAssessmentApprove(resApprType, assID));
+      setresponse(initialState);
+      history.push(parentRoute);
+    }
   };
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>, ind: number, id: number) => {
+  const handleChange = (e: any, value: number, ind: number) => {
     setresponse(
       response.map((item, index: number) => {
         if (index === ind) {
-          return e.target.value;
+          return value;
         }
         return item;
       }),
     );
-    // setresponse({ ...response, [index]: e.target.value });
-    console.log(e.target.value, ind, response, id);
   };
   return (
     <>
       {list &&
+        response &&
         list.map((item, index: number) => (
           <Box key={index}>
             <Box>
               <Box>متن سوال</Box>
               <Box m={2}>{item.title}</Box>
             </Box>
-            <CustomTextField
-              width="10%"
-              variant="outlined"
-              margin="normal"
-              required={true}
-              fullWidth={true}
-              id="response"
-              label="پاسخ"
-              name={'response'}
-              autoFocus={true}
+            <RangePicker
               value={response[index]}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e, index, item.id)}
+              handleChange={(e: any, val: any) => handleChange(e, val, index)}
             />
           </Box>
         ))}

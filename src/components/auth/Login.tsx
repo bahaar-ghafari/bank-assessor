@@ -13,7 +13,7 @@ import { useDispatch } from 'react-redux';
 import { loginRequest } from '../../redux/Auth/action';
 import { theme } from '../../Constants/Theme';
 import tarbiatModarresLogo from '../../assets/img/modarres.jpg';
-import vezarat_eghtesadLogo from '../../assets/img/vEghtesad.png';
+import vezarat_eghtesadLogo from '../../assets/img/vEghtesad.jpeg';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -57,10 +57,20 @@ export default function Login() {
       <CssBaseline />
       {/* <Grid item xs={false} sm={4} md={7} className={classes.image} /> */}
       <Grid item xs={false} sm={4} md={7} className={classes.image}>
-        <Box height="100vh" display="flex" flexDirection="column">
-          <Box display="flex">
-            <img width="164px" src={tarbiatModarresLogo} alt="tarbiat_modarres_uni_logo" />
-            <img width="164px" src={vezarat_eghtesadLogo} alt="vezarat_eghtesad_logo" />
+        <Box height="100vh" display="flex" flexDirection="column" justifyContent="center">
+          <Box display="flex" alignItems="center" justifyContent="center">
+            <img
+              width="164px"
+              height="164px"
+              src={tarbiatModarresLogo}
+              alt="tarbiat_modarres_uni_logo"
+            />
+            <img
+              width="164px"
+              height="164px"
+              src={vezarat_eghtesadLogo}
+              alt="vezarat_eghtesad_logo"
+            />
           </Box>
           <Box display="flex" flexDirection="column" alignItems="center">
             <h3> (سامانه ارزیابی بلوغ مدیریت ریسک(ویرایش دمو</h3>

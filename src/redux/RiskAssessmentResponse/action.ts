@@ -8,7 +8,7 @@ export const sendResponse = (
   type: 'bank-response' | 'general-response',
   data: {
     componentId: number;
-    response: string;
+    response: number;
   }[],
 ): AppAction<ActionModel> => async (dispatch, getState) => {
   dispatch({ type: RiskAssessmentActionTypes.sendResponse });

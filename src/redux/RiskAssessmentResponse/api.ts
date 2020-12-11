@@ -8,7 +8,7 @@ export const RiskAssessmentApi = {
     type: 'bank-response' | 'general-response',
     data: {
       componentId: number;
-      response: string;
+      response: number;
     }[],
   ) => {
     return axios.post(sendResponseUrl + `/risk-assessment/${id}/${type}`, data);

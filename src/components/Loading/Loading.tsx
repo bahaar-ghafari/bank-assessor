@@ -43,7 +43,7 @@ export default function Loading() {
   return (
     <Dialog maxWidth="lg" open={true}>
       <Box p={14}>
-        {/* <img width="164px" src={tarbiatModarresLogo} alt="tarbiat_modarres_uni_logo" /> */}
+        <img width="164px" src={tarbiatModarresLogo} alt="tarbiat_modarres_uni_logo" />
         <Box my={2}>لطفا منتظر بمانید</Box>
         <LinearProgress variant="buffer" value={progress} valueBuffer={buffer} />
       </Box>

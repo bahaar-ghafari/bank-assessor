@@ -8,7 +8,7 @@ import { logOutRequest } from '../../redux/Auth/action';
 import { useDispatch } from 'react-redux';
 
 import tarbiatModarresLogo from '../../assets/img/modarres.jpg';
-import vezarat_eghtesadLogo from '../../assets/img/vEghtesad.png';
+import vezarat_eghtesadLogo from '../../assets/img/vEghtesad.jpeg';
 
 import BANK_MASKAN from '../../assets/img/bank_maskan.png';
 import BANK_MELLAT from '../../assets/img/bank_mellat.png';
