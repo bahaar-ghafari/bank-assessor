@@ -67,6 +67,8 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+    display: 'flex',
+    justifyContent: 'space-between',
   },
   drawerPaper: {
     position: 'relative',
@@ -169,23 +171,6 @@ export default function Pages(props: any) {
       <div dir="rtl" className="body">
         <div className={classes.root}>
           <CssBaseline />
-          {/* <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
-            <Toolbar className={classes.toolbar}>
-              <IconButton
-                edge="start"
-                color="inherit"
-                aria-label="open drawer"
-                onClick={handleDrawerOpen}
-                className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
-              >
-                <MenuIcon />
-              </IconButton>
-              <IconButton color="inherit" onClick={(e: any) => dispatch(logOutRequest(e, history))}>
-                <AccountCircle />
-                {currentUser?.username}
-              </IconButton>
-            </Toolbar>
-          </AppBar> */}
           <Header
             open={open}
             handleDrawerOpen={handleDrawerOpen}

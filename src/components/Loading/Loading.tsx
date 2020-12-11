@@ -2,6 +2,7 @@ import * as React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { Box, Dialog } from '@material-ui/core';
+import tarbiatModarresLogo from '../../assets/img/modarres.jpg';
 
 const useStyles = makeStyles({
   root: {
@@ -42,6 +43,7 @@ export default function Loading() {
   return (
     <Dialog maxWidth="lg" open={true}>
       <Box p={14}>
+        {/* <img width="164px" src={tarbiatModarresLogo} alt="tarbiat_modarres_uni_logo" /> */}
         <Box my={2}>لطفا منتظر بمانید</Box>
         <LinearProgress variant="buffer" value={progress} valueBuffer={buffer} />
       </Box>
