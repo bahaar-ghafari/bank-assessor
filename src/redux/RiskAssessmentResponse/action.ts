@@ -3,7 +3,6 @@ import { RiskAssessmentActionTypes } from './actionType';
 import { ActionModel } from './model';
 import { RiskAssessmentApi } from './api';
 
-//component
 export const sendResponse = (
   id: number,
   type: 'bank-response' | 'general-response',

@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import DefineNewAssessorsForms from './View/DefineNewAssessorsForms';
 import AssessorsFormsStatus from './View/AssessorsFormsStatus';
-import AssessorsFormsStatusPerPage from './View/components/SubmittedAssessorsPage';
+import AssessorsFormsStatusPerPage from './View/components/AssessorsFormsStatusPerPage';
 import CheckBankAssessorSResponse from './View/CheckBankAssessorSResponse';
 import GetReports from './View/GetReports';
 import NeedsCheckAssessmentForms from './View/NeedsCheckAssessmentForms';

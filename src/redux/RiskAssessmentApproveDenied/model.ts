@@ -1,7 +1,6 @@
 import { Action } from 'redux';
 import { RiskAssessmentActionTypes } from './actionType';
 
-//component get
 interface IRiskAssessmentApprove extends Action<string> {
   type: RiskAssessmentActionTypes.SetRiskAssessmentApprove;
 }

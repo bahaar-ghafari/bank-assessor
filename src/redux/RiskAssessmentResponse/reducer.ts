@@ -1,7 +1,7 @@
 import { Reducer } from 'redux';
 import { RiskAssessmentActionTypes } from './actionType';
 
-export const RiskAssessmentComponentReducer: Reducer<any> = (state: any = null, action: any) => {
+export const sendResponseReducer: Reducer<any> = (state: any = null, action: any) => {
   switch (action.type) {
     case RiskAssessmentActionTypes.sendResponse: {
       return {

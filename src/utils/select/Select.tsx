@@ -13,17 +13,15 @@ export default function CustomSelect({ customValue, handleChange, list, selectLa
       <Box width="10%" mr={1}>
         {selectLabel}
       </Box>
-      <Box>
-        <FormControl variant="outlined">
-          <Select value={customValue} onChange={handleChange}>
-            {list.map((item) => (
-              <MenuItem value={item.value} key={item.value}>
-                {item.label}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-      </Box>
+      <FormControl variant="outlined" fullWidth={true}>
+        <Select value={customValue} onChange={handleChange}>
+          {list.map((item) => (
+            <MenuItem value={item.value} key={item.value}>
+              {item.label}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
     </Box>
   );
 }

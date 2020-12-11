@@ -11,10 +11,6 @@ import CustomButton from '../../utils/buttons/Button';
 import AssessorItems from './AssessorItems';
 
 export default function SubmittedAssessorsPage(): ReactElement {
-  const currentRiskAssessment = useSelector(
-    (state: IApplicationState) => state.riskAssessment?.data,
-  );
-
   const currentRiskAssessmentComponent = useSelector(
     (state: IApplicationState) => state.riskAssessmentComponent,
   );
@@ -29,15 +25,11 @@ export default function SubmittedAssessorsPage(): ReactElement {
   const history = useHistory();
 
   const assID = parseInt(history.location.pathname.split('/')[2]);
-  const currentRiskAssessmentStatus =
-    currentRiskAssessment &&
-    currentRiskAssessment.length > 0 &&
-    currentRiskAssessment.find((item) => item.id === assID)?.status;
 
   useEffect(() => {
     dispatch(RiskAssessment());
     dispatch(GetRiskAssessmentComponent(history, 'submitted', assID));
-  }, [currentRiskAssessmentStatus, assID, dispatch, history]);
+  }, []);
 
   const list = currentRiskAssessmentComponent?.data;
   const assessorItemsData = list?.map((item) => {

@@ -3,10 +3,9 @@ import { RiskAssessmentActionTypes } from './actionType';
 import { ActionModel } from './model';
 import { RiskAssessmentApi } from './api';
 
-//component
 export const GetRiskAssessmentComponent = (
   history: any,
-  historyPath: string,
+  historyPath: 'created' | 'submitted' | 'getResponse' | 'getGeneralResponse' | 'chechBankResponse',
   id: number,
 ): AppAction<ActionModel> => async (dispatch, getState) => {
   dispatch({ type: RiskAssessmentActionTypes.GetRiskAssessmentComponent });

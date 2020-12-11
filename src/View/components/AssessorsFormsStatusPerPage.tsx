@@ -5,7 +5,6 @@ import { useHistory } from 'react-router-dom';
 import DeleteModal from '../../components/Dialogs/DeleteModal';
 import Loading from '../../components/Loading/Loading';
 import NoData from '../../components/Nodata.tsx/NoData';
-import AssessorItemsTable from '../../components/Tables/AssessorItemsTable';
 import { DeleteRiskAssessment, RiskAssessment } from '../../redux/RiskAssessment/action';
 import { SetRiskAssessmentApprove } from '../../redux/RiskAssessmentApproveDenied/action';
 import { CreateRiskAssessmentComponent } from '../../redux/RiskAssessmentComponent/action';
@@ -58,7 +57,7 @@ export default function AssessorsFormsStatusPerPage(): ReactElement {
 
   useEffect(() => {
     dispatch(RiskAssessment());
-    // dispatch(GetRiskAssessmentComponent(history, 'AssessorsFormsStatus', assID));
+    dispatch(GetRiskAssessmentComponent(history, 'created', assID));
   }, [currentRiskAssessmentStatus, assID, dispatch, history]);
 
   const renderAction = (data: IDataType) => {
@@ -89,7 +88,7 @@ export default function AssessorsFormsStatusPerPage(): ReactElement {
     dispatch(DeleteRiskAssessment(Assessors.id));
     setLoading(true);
     setTimeout(() => {
-      // dispatch(GetRiskAssessmentComponent(history, 'AssessorsFormsStatus', assID));
+      dispatch(GetRiskAssessmentComponent(history, 'created', assID));
       setLoading(false);
     }, 200);
     setshowdeleteModal(false);
@@ -103,7 +102,7 @@ export default function AssessorsFormsStatusPerPage(): ReactElement {
     dispatch(CreateRiskAssessmentComponent(Assessors.title, assID));
     setLoading(true);
     setTimeout(() => {
-      // dispatch(GetRiskAssessmentComponent(history, 'AssessorsFormsStatus', assID));
+      dispatch(GetRiskAssessmentComponent(history, 'created', assID));
       setLoading(false);
     }, 200);
     setshowCreateModal(false);

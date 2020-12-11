@@ -7,7 +7,6 @@ export interface IRiskAssessmentComponentState {
   loading: boolean;
 }
 
-//component get
 interface IRiskAssessmentComponent extends Action<string> {
   type: RiskAssessmentActionTypes.GetRiskAssessmentComponent;
 }
@@ -18,7 +17,6 @@ interface IRiskAssessmentComponentSuccess extends Action<string> {
 interface IRiskAssessmentComponentFail extends Action<string> {
   type: RiskAssessmentActionTypes.GetRiskAssessmentComponentFail;
 }
-//component create
 interface ICreateRiskAssessmentComponent extends Action<string> {
   type: RiskAssessmentActionTypes.CreateRiskAssessmentComponent;
 }

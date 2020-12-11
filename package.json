@@ -15,6 +15,7 @@
     "@types/react-redux": "^7.1.11",
     "axios": "^0.21.0",
     "ci": "^1.0.0",
+    "jalali-react-datepicker": "^1.2.1",
     "jss-rtl": "^0.3.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

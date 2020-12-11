@@ -3,7 +3,6 @@ import { RiskAssessmentActionTypes } from './actionType';
 import { ActionModel } from './model';
 import { RiskAssessmentApi } from './api';
 
-//component
 export const SetRiskAssessmentApprove = (role: any, id: number): AppAction<ActionModel> => async (
   dispatch,
   getState,
