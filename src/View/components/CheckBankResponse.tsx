@@ -44,6 +44,7 @@ export default function CheckBankResponse(): ReactElement {
     return {
       key: 'پاسخ بانک',
       value: item.bankAssessmentResponse,
+      title: item.title,
     };
   });
   const handleApprove = () => {

@@ -51,7 +51,7 @@ export default function AssessorsTable(props: IProps) {
                   ? 'بانک مسکن'
                   : row.bankName === 'BANK_MELLAT'
                   ? 'بانک ملت'
-                  : row.bankName + 'بانک'}
+                  : row.bankName}
               </TableCell>
               {hasStatus && <TableCell align="center">{row.status}</TableCell>}
               <TableCell align="center">{getDate(row.startDate)}</TableCell>

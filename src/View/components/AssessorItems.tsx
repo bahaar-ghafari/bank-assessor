@@ -3,7 +3,7 @@ import React, { ReactElement } from 'react';
 import CustomTypoGraphy from '../../utils/typoGraphy/TypoGraphy';
 
 interface Props {
-  data: { key: string; value: string }[];
+  data: { key: string; value: string; title: string }[];
   renderAction?: any;
 }
 
@@ -11,7 +11,7 @@ export default function AssessorItems({ data, renderAction }: Props): ReactEleme
   return (
     <Grid container spacing={3}>
       {data.map((item) => (
-        <Grid item xs={12} md={6} lg={4}>
+        <Grid item xs={12}>
           <Box
             m={1}
             p={2}
@@ -20,8 +20,14 @@ export default function AssessorItems({ data, renderAction }: Props): ReactEleme
             boxShadow={3}
             color="text.secondary"
           >
-            <Box display="flex">
-              <Box mb={3} width="20%" display="flex">
+            <Box display="flex" mb={3}>
+              <Box alignItems="center" width="10%" display="flex">
+                عنوان :{' '}
+              </Box>
+              <CustomTypoGraphy component="h3" label={item.title} />
+            </Box>
+            <Box display="flex" mb={3}>
+              <Box alignItems="center" width="10%" display="flex">
                 {item.key} :{' '}
               </Box>
               <CustomTypoGraphy component="h3" label={item.value} />

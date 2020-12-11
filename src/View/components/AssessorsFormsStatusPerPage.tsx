@@ -76,8 +76,9 @@ export default function AssessorsFormsStatusPerPage(): ReactElement {
   const list = currentRiskAssessmentComponent?.data;
   const assessorItemsData = list?.map((item) => {
     return {
-      key: 'عنوان',
-      value: item.title,
+      key: '',
+      value: '',
+      title: item.title,
     };
   });
   const handleDelete = (data: IDataType) => {

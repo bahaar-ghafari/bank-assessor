@@ -24,6 +24,7 @@ function PrivateRout() {
       <Route path="/submitted/:id" component={SubmittedAssessorsPage} />
       <Route path="/chechBankResponse/:id" component={chechBankResponse} />
       <Route path="/getResponse/:id" component={ResponseForm} />
+      <Route path="/getGeneralResponse/:id" component={ResponseForm} />
       {/* risk_management_assessor_sideBarItems */}
       <Route path="/DefineNewAssessorsForms" component={DefineNewAssessorsForms} />
       <Route path="/CheckBankAssessorSResponse" component={CheckBankAssessorSResponse} />

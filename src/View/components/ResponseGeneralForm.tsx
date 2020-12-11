@@ -15,7 +15,8 @@ export default function ResponseForm(): ReactElement {
     (state: IApplicationState) => state.riskAssessmentComponent,
   );
   const list = assessmentElements?.data;
-  // const [response, setresponse] = useState();
+  const initialState = list && list.map((item) => ' ');
+  const [response, setresponse] = useState(initialState);
   const dispatch = useDispatch();
   const history = useHistory();
   const assID = parseInt(history.location.pathname.split('/')[2]);
@@ -28,14 +29,22 @@ export default function ResponseForm(): ReactElement {
     const data = list.map((item, index: number) => {
       return {
         componentId: item.id,
-        Response: 'res' + index,
+        response: response[index],
       };
     });
     dispatch(sendResponse(assID, 'general-response', data));
     dispatch(SetRiskAssessmentApprove('general-assessed', assID));
+    setresponse(initialState);
   };
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>, ind: number, id: number) => {
+    setresponse(
+      response.map((item, index: number) => {
+        if (index === ind) {
+          return e.target.value;
+        }
+        return item;
+      }),
+    );
   };
   return (
     <>
@@ -52,10 +61,9 @@ export default function ResponseForm(): ReactElement {
               id="response"
               label="پاسخ"
               name={`response${index}`}
-              autoComplete="فعلا نوشتن پاسخ مهیا نیست"
               autoFocus={true}
-              value={'response'}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)}
+              value={response[index]}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e, index, item.id)}
             />
           </Box>
         ))}
