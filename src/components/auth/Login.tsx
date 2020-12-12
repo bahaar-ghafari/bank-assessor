@@ -55,7 +55,7 @@ export default function Login() {
   const history = useHistory();
   const [userName, setUserName] = useState('');
   const [passWord, setPassWord] = useState('');
-  const [open, setOpen] = useState(false);
+  const [openNotif, setOpenNotif] = useState(false);
   const currentUser = useSelector((state: IApplicationState) => state.auth);
   const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -71,10 +71,10 @@ export default function Login() {
         ),
       );
       if (!currentUser.authorized && !currentUser.loading) {
-        setOpen(true);
+        setOpenNotif(true);
       }
     } else {
-      setOpen(true);
+      setOpenNotif(true);
     }
   };
   return (
@@ -177,10 +177,10 @@ export default function Login() {
             </Grid> */}
                 </form>
               </div>
-              {open && (
+              {openNotif && (
                 <NotificationManager
-                  open={open}
-                  handleClose={() => setOpen(false)}
+                  open={openNotif}
+                  handleClose={() => setOpenNotif(false)}
                   message="نام کاربری و گذرواژه را چک کنید"
                 />
               )}

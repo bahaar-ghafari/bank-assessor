@@ -4,6 +4,7 @@ import RiskAssessmentForms from './components/RiskAssessmentForm';
 import { CreateRiskAssessment } from '../redux/RiskAssessment/action';
 import moment from 'moment';
 import NotificationManager from '../components/Notification/NotificationManager';
+
 export default function DefineNewAssessorsForms(): ReactElement {
   const dispatch = useDispatch();
   const initial = {
@@ -13,10 +14,10 @@ export default function DefineNewAssessorsForms(): ReactElement {
     deadlineDate: moment(),
   };
 
-  const [open, setOpen] = useState(false);
+  const [openNotif, setOpenNotif] = useState(false);
   const [Assessors, setAssessors] = useState(initial);
   const handleClose = () => {
-    setOpen(false);
+    setOpenNotif(false);
   };
   const handleChange = (name: string, value: any) => {
     if (['startDate', 'deadlineDate'].includes(name)) {
@@ -27,7 +28,7 @@ export default function DefineNewAssessorsForms(): ReactElement {
   };
   const handleSubmit = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(CreateRiskAssessment(event, Assessors));
-    setOpen(true);
+    setOpenNotif(true);
     setAssessors(initial);
   };
   return (
@@ -40,9 +41,9 @@ export default function DefineNewAssessorsForms(): ReactElement {
         onChange={handleChange}
         onSubmit={(event: React.ChangeEvent<HTMLInputElement>) => handleSubmit(event)}
       />
-      {open && (
+      {openNotif && (
         <NotificationManager
-          open={open}
+          open={openNotif}
           handleClose={handleClose}
           message="فرم ارزیابی با موفقیت ساخته شد"
         />

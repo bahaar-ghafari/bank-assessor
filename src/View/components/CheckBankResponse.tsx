@@ -1,5 +1,5 @@
 import { Box, makeStyles } from '@material-ui/core';
-import React, { ReactElement, useEffect } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import NoData from '../../components/Nodata.tsx/NoData';
@@ -9,6 +9,7 @@ import { IApplicationState } from '../../store/state';
 import CustomButton from '../../utils/buttons/Button';
 import { GetRiskAssessmentComponent } from '../../redux/RiskAssessmentComponent/action';
 import AssessorItems from './AssessorItems';
+import NotificationManager from '../../components/Notification/NotificationManager';
 
 export default function CheckBankResponse(): ReactElement {
   const currentRiskAssessment = useSelector(
@@ -28,6 +29,7 @@ export default function CheckBankResponse(): ReactElement {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  const [openNotif, setopenNotif] = useState(false);
   const assID = parseInt(history.location.pathname.split('/')[2]);
   const currentRiskAssessmentStatus =
     currentRiskAssessment &&
@@ -48,6 +50,7 @@ export default function CheckBankResponse(): ReactElement {
     };
   });
   const handleApprove = () => {
+    setopenNotif(true);
     dispatch(
       SetRiskAssessmentApprove(
         'bank-assessed-approved',
@@ -58,6 +61,7 @@ export default function CheckBankResponse(): ReactElement {
     );
   };
   const handleDeny = () => {
+    setopenNotif(true);
     dispatch(
       SetRiskAssessmentApprove(
         'bank-assessed-not-approved',
@@ -92,6 +96,13 @@ export default function CheckBankResponse(): ReactElement {
         <AssessorItems data={assessorItemsData} renderAction={false} />
       ) : (
         <NoData />
+      )}
+      {openNotif && (
+        <NotificationManager
+          open={openNotif}
+          handleClose={() => setopenNotif(false)}
+          message="مولفه با موفقیت تغییر وضعیت داد"
+        />
       )}
     </>
   );
