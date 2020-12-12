@@ -9,12 +9,14 @@ import CustomButton from '../../utils/buttons/Button';
 // import CustomCheckBox from "../../utils/checkBox/CheckBox";
 import CustomTypoGraphy from '../../utils/typoGraphy/TypoGraphy';
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginRequest } from '../../redux/Auth/action';
 import { theme } from '../../Constants/Theme';
 import tarbiatModarresLogo from '../../assets/img/modarres.jpg';
 import vezarat_eghtesadLogo from '../../assets/img/vEghtesad.jpeg';
-
+import NotificationManager from '../Notification/NotificationManager';
+import { IApplicationState } from '../../store/state';
+import Loading from '../Loading/Loading';
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
@@ -52,6 +54,28 @@ export default function Login() {
   const history = useHistory();
   const [userName, setUserName] = useState('');
   const [passWord, setPassWord] = useState('');
+  const [open, setOpen] = useState(false);
+  const currentUser = useSelector((state: IApplicationState) => state.auth);
+  const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    if (userName.length > 0 && passWord.length > 0 && userName === passWord) {
+      dispatch(
+        loginRequest(
+          e,
+          {
+            username: userName,
+            password: passWord,
+          },
+          history,
+        ),
+      );
+      if (!currentUser.authorized && !currentUser.loading) {
+        setOpen(true);
+      }
+    } else {
+      setOpen(true);
+    }
+  };
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -134,18 +158,7 @@ export default function Login() {
                     color="primary"
                     className={classes.submit}
                     label="ورود"
-                    onClickFunction={(e: React.ChangeEvent<HTMLInputElement>) =>
-                      dispatch(
-                        loginRequest(
-                          e,
-                          {
-                            username: userName,
-                            password: passWord,
-                          },
-                          history,
-                        ),
-                      )
-                    }
+                    onClickFunction={(e: React.ChangeEvent<HTMLInputElement>) => handleSubmit(e)}
                   />
                   {/* </Link> */}
 
@@ -163,6 +176,14 @@ export default function Login() {
             </Grid> */}
                 </form>
               </div>
+              {open && (
+                <NotificationManager
+                  open={open}
+                  handleClose={() => setOpen(false)}
+                  message="نام کاربری و گذرواژه را چک کنید"
+                />
+              )}
+              {currentUser?.loading && <Loading />}
             </ThemeProvider>
           </Box>
         </div>

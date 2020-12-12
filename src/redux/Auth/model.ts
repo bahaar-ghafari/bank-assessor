@@ -1,5 +1,5 @@
-import { Action } from "redux";
-import { AuthActionTypes } from "./actionType";
+import { Action } from 'redux';
+import { AuthActionTypes } from './actionType';
 
 export type LoginType = {
   username: string;
@@ -10,6 +10,7 @@ export interface IAuthState {
   username: string;
   role: any;
   authorized: boolean;
+  loading: boolean;
 }
 
 interface ILogin extends Action<string> {

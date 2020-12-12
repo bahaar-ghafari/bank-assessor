@@ -40,7 +40,13 @@ export default function DefineNewAssessorsForms(): ReactElement {
         onChange={handleChange}
         onSubmit={(event: React.ChangeEvent<HTMLInputElement>) => handleSubmit(event)}
       />
-      {open && <NotificationManager open={open} handleClose={handleClose} />}
+      {open && (
+        <NotificationManager
+          open={open}
+          handleClose={handleClose}
+          message="فرم ارزیابی با موفقیت ساخته شد"
+        />
+      )}
     </div>
   );
 }

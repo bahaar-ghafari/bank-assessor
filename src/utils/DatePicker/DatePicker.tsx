@@ -20,11 +20,7 @@ export default function CustomDatePicker({
         </Box>
         <Box className="DatePickerBox">
           {/* <DatePickerPure selectedValue={selectedValue} onhandleChange={onchandleDate} /> */}
-          <DateTimePickerKavan
-            exacttimeDate={selectedValue}
-            handleDateChange={onchandleDate}
-            labelID={customLabel}
-          />
+          <DateTimePickerKavan exacttimeDate={selectedValue} handleDateChange={onchandleDate} />
         </Box>
       </Box>
     </>

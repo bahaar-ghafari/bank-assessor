@@ -22,13 +22,10 @@ const useStyles = makeStyles({
 });
 
 export const DateTimePickerKavan = (props) => {
-  const { exacttimeDate, handleDateChange, labelID } = props;
+  const { exacttimeDate, handleDateChange } = props;
   const classes = useStyles();
   return (
     <Box mb={1}>
-      <Box mb={1} display="flex" justifyContent="start">
-        {labelID}
-      </Box>
       <MuiPickersUtilsProvider utils={JalaliUtils} locale="fa">
         <DateTimePicker
           InputAdornmentProps={{ position: 'start' }}
