@@ -14,9 +14,6 @@ const useStyles = makeStyles({
   root: {
     '&>div': {
       flexDirection: 'row-reverse',
-      '& input': {
-        textAlign: 'center',
-      },
     },
   },
 });
