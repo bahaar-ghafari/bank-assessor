@@ -39,11 +39,8 @@ export const logOutRequest = (
       if (history) {
         history.replace('/login');
       }
-    } else {
-      console.log('hhhll');
     }
   } catch (error) {
-    console.log('hhh', error);
     dispatch({ type: AuthActionTypes.LogOutFail });
   }
 };

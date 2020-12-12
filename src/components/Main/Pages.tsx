@@ -27,7 +27,7 @@ import { SIDE_BAR_WIDTH, DASHBOARD_NAME } from '../../Constants/General';
 import PrivateRout from '../../Route';
 import { theme } from '../../Constants/Theme';
 import Header from '../Header/Header';
-import '../../styles.scss';
+import '../../assets/style/styles.scss';
 
 const drawerWidth = SIDE_BAR_WIDTH;
 const useStyles = makeStyles((theme) => ({
