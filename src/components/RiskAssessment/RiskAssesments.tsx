@@ -47,6 +47,7 @@ export default function RiskAssesments({ assesmentStatus, historyPath }: IProps)
     dispatch(RiskAssessment());
   }, []);
 
+  const currentUser = useSelector((state: IApplicationState) => state.auth);
   const currentRiskAssessment = useSelector((state: IApplicationState) => state.riskAssessment);
 
   const useStyles = makeStyles((theme) => ({
@@ -89,9 +90,15 @@ export default function RiskAssesments({ assesmentStatus, historyPath }: IProps)
     : tempoColumns;
 
   const currentRiskAssessmentData = currentRiskAssessment?.data;
-  const list =
-    currentRiskAssessmentData &&
-    currentRiskAssessmentData?.filter((item) => item.status === assesmentStatus);
+  const listTempo = historyPath && ['getResponse', 'getGeneralResponse'].includes(historyPath);
+  const list = listTempo
+    ? currentRiskAssessmentData &&
+      currentRiskAssessmentData
+        ?.filter((item) => item.status === assesmentStatus)
+        .filter((item) => item.bankName === currentUser.role)
+    : currentRiskAssessmentData &&
+      currentRiskAssessmentData?.filter((item) => item.status === assesmentStatus);
+
   const rows =
     list &&
     list.map((item) => {

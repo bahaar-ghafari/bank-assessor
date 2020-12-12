@@ -17,6 +17,7 @@ import vezarat_eghtesadLogo from '../../assets/img/vEghtesad.jpeg';
 import NotificationManager from '../Notification/NotificationManager';
 import { IApplicationState } from '../../store/state';
 import Loading from '../Loading/Loading';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
