@@ -14,6 +14,7 @@ import CreateAsseessorComponentModal from './CreateAsseessorComponentModal';
 
 import { GetRiskAssessmentComponent } from '../../redux/RiskAssessmentComponent/action';
 import AssessorItems from './AssessorItems';
+import NotificationManager from '../../components/Notification/NotificationManager';
 
 interface IDataType {
   id: number;
@@ -25,6 +26,7 @@ export default function AssessorsFormsStatusPerPage(): ReactElement {
   const [showdeleteModal, setshowdeleteModal] = useState(false);
   const [showCreateModal, setshowCreateModal] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [openNotif, setopenNotif] = useState(false);
   const [Assessors, setAssessors] = useState({
     id: 0,
     title: '',
@@ -99,7 +101,6 @@ export default function AssessorsFormsStatusPerPage(): ReactElement {
   };
   const handleSubmit = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
-
     dispatch(CreateRiskAssessmentComponent(Assessors.title, assID));
     setLoading(true);
     setTimeout(() => {
@@ -109,7 +110,8 @@ export default function AssessorsFormsStatusPerPage(): ReactElement {
     setshowCreateModal(false);
   };
   const handleApprove = () => {
-    dispatch(SetRiskAssessmentApprove('submit', assID));
+    setopenNotif(true);
+    dispatch(SetRiskAssessmentApprove('submit', assID, history, 'AssessorsFormsStatus'));
   };
 
   return (
@@ -155,6 +157,13 @@ export default function AssessorsFormsStatusPerPage(): ReactElement {
         <AssessorItems data={assessorItemsData} renderAction={renderAction} />
       ) : (
         <NoData />
+      )}
+      {openNotif && (
+        <NotificationManager
+          open={openNotif}
+          handleClose={() => setopenNotif(false)}
+          message="مولفه با موفقیت تغییر وضعیت داد"
+        />
       )}
       {loading && <Loading />}
     </>

@@ -40,10 +40,12 @@ export default function SubmittedAssessorsPage(): ReactElement {
     };
   });
   const handleApprove = () => {
-    dispatch(SetRiskAssessmentApprove('start', assID));
+    dispatch(SetRiskAssessmentApprove('start', assID, history, 'NeedsCheckAssessmentForms'));
   };
   const handleDeny = () => {
-    dispatch(SetRiskAssessmentApprove('decline-by-committee', assID));
+    dispatch(
+      SetRiskAssessmentApprove('decline-by-committee', assID, history, 'NeedsCheckAssessmentForms'),
+    );
   };
   return (
     <>

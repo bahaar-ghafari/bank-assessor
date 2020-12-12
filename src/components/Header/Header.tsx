@@ -45,20 +45,20 @@ export default function Header(props: Props): ReactElement {
         </IconButton>
         <Box height="64px">
           <img
-            style={{ padding: '16px' }}
+            style={{ padding: '4px' }}
             height="100%"
             src={tarbiatModarresLogo}
             alt="tarbiat_modarres_uni_logo"
           />
           <img
-            style={{ padding: '16px' }}
+            style={{ padding: '4px' }}
             height="100%"
             src={vezarat_eghtesadLogo}
             alt="vezarat_eghtesad_logo"
           />
           {currentUser.role === 'BANK_MELLAT' && (
             <img
-              style={{ padding: '16px' }}
+              style={{ padding: '4px' }}
               height="100%"
               src={BANK_MELLAT}
               alt="vezarat_eghtesad_logo"
@@ -66,7 +66,7 @@ export default function Header(props: Props): ReactElement {
           )}
           {currentUser.role === 'BANK_MELLI' && (
             <img
-              style={{ padding: '16px' }}
+              style={{ padding: '4px' }}
               height="100%"
               src={BANK_MELLI}
               alt="vezarat_eghtesad_logo"
@@ -74,7 +74,7 @@ export default function Header(props: Props): ReactElement {
           )}
           {currentUser.role === 'BANK_MASKAN' && (
             <img
-              style={{ padding: '16px' }}
+              style={{ padding: '4px' }}
               height="100%"
               src={BANK_MASKAN}
               alt="vezarat_eghtesad_logo"

@@ -23,7 +23,7 @@ export default function ResponseForm(): ReactElement {
   const pathhistry = type ? 'getGeneralResponse' : 'getResponse';
   const restype = type ? 'general-response' : 'bank-response';
   const resApprType = type ? 'general-assessed' : 'bank-assessed';
-  const parentRoute = type ? 'OngoingGeneralAssessment' : '/OngoingAssessment';
+  const parentRoute = type ? 'OngoingGeneralAssessment' : 'OngoingAssessment';
   const assID = parseInt(history.location.pathname.split('/')[2]);
   useEffect(() => {
     dispatch(GetRiskAssessmentComponent(history, pathhistry, assID));
@@ -39,7 +39,7 @@ export default function ResponseForm(): ReactElement {
         };
       });
       dispatch(sendResponse(assID, restype, data));
-      dispatch(SetRiskAssessmentApprove(resApprType, assID));
+      dispatch(SetRiskAssessmentApprove(resApprType, assID, history, parentRoute));
       setresponse(initialState);
       history.push(parentRoute);
     }

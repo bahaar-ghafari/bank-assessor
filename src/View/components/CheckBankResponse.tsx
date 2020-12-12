@@ -48,10 +48,24 @@ export default function CheckBankResponse(): ReactElement {
     };
   });
   const handleApprove = () => {
-    dispatch(SetRiskAssessmentApprove('bank-assessed-approved', assID));
+    dispatch(
+      SetRiskAssessmentApprove(
+        'bank-assessed-approved',
+        assID,
+        history,
+        'CheckBankAssessorSResponse',
+      ),
+    );
   };
   const handleDeny = () => {
-    dispatch(SetRiskAssessmentApprove('bank-assessed-not-approved', assID));
+    dispatch(
+      SetRiskAssessmentApprove(
+        'bank-assessed-not-approved',
+        assID,
+        history,
+        'CheckBankAssessorSResponse',
+      ),
+    );
   };
   return (
     <>
