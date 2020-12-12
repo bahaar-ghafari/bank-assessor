@@ -62,7 +62,7 @@ export default function AssessorsFormsStatusPerPage(): ReactElement {
     dispatch(GetRiskAssessmentComponent(history, 'created', assID));
   }, [currentRiskAssessmentStatus, assID, dispatch, history]);
 
-  const renderAction = (data: IDataType) => {
+  const renderAction = (data: any) => {
     return (
       <Box display="flex" alignItems="center" justifyContent="center">
         <CustomButton
@@ -81,6 +81,7 @@ export default function AssessorsFormsStatusPerPage(): ReactElement {
       key: '',
       value: '',
       title: item.title,
+      id: item.id,
     };
   });
   const handleDelete = (data: IDataType) => {
@@ -106,7 +107,7 @@ export default function AssessorsFormsStatusPerPage(): ReactElement {
     setTimeout(() => {
       dispatch(GetRiskAssessmentComponent(history, 'created', assID));
       setLoading(false);
-    }, 200);
+    }, 2000);
     setshowCreateModal(false);
   };
   const handleApprove = () => {

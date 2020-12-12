@@ -16,20 +16,19 @@ import ApprovedAssessment from './View/ApprovedAssessment';
 import NotFoundComponent from './View/NotFoundComponent';
 import SubmittedAssessorsPage from './View/components/SubmittedAssessorsPage';
 import ResponseForm from './View/components/ResponseForm';
-import chechBankResponse from './View/components/CheckBankResponse';
+import checkBankResponse from './View/components/CheckBankResponse';
 function PrivateRout() {
   return (
     <Switch>
-      <Route path="/created/:id" component={AssessorsFormsStatusPerPage} />
-      <Route path="/submitted/:id" component={SubmittedAssessorsPage} />
-      <Route path="/chechBankResponse/:id" component={chechBankResponse} />
-      <Route path="/getResponse/:id" component={ResponseForm} />
-      <Route path="/getGeneralResponse/:id" component={ResponseForm} />
       {/* risk_management_assessor_sideBarItems */}
+      <Route path="/checkBankResponse/:id" component={checkBankResponse} />
+      <Route path="/created/:id" component={AssessorsFormsStatusPerPage} />
       <Route path="/DefineNewAssessorsForms" component={DefineNewAssessorsForms} />
       <Route path="/CheckBankAssessorSResponse" component={CheckBankAssessorSResponse} />
       <Route path="/GetReports" component={GetReports} />
       {/*  committee_sideBarItems*/}
+      <Route path="/checkAllResponse/:id" component={checkBankResponse} />
+      <Route path="/submitted/:id" component={SubmittedAssessorsPage} />
       <Route path="/NeedsCheckAssessmentForms" component={NeedsCheckAssessmentForms} />
       <Route path="/NeedsCheckAssessment" component={NeedsCheckAssessment} />
       <Route
@@ -37,9 +36,11 @@ function PrivateRout() {
         component={ApprovedGeneralAssessmentResults}
       />
       {/* general_assessor_sideBarItems */}
+      <Route path="/getGeneralResponse/:id" component={ResponseForm} />
       <Route path="/OngoingGeneralAssessment" component={OngoingGeneralAssessment} />
       <Route path="/approvedGeneralAssessment" component={ApprovedGeneralAssessment} />
       {/* bank_sideBarItems */}
+      <Route path="/getResponse/:id" component={ResponseForm} />
       <Route path="/OngoingAssessment" component={OngoingAssessment} />
       <Route path="/NeedsCorrectionAssessment" component={NeedsCorrectionAssessment} />
       <Route path="/approvedAssessment" component={ApprovedAssessment} />

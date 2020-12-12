@@ -33,7 +33,7 @@ export default function AssessorItems({ data, renderAction }: Props): ReactEleme
               <CustomTypoGraphy component="h3" label={item.value} />
             </Box>
 
-            {renderAction ? renderAction() : null}
+            {renderAction ? renderAction(item) : null}
           </Box>
         </Grid>
       ))}

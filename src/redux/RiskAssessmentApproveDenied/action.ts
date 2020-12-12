@@ -12,7 +12,8 @@ export const SetRiskAssessmentApprove = (
     | 'AssessorsFormsStatus'
     | 'OngoingAssessment'
     | 'OngoingGeneralAssessment'
-    | 'NeedsCheckAssessmentForms',
+    | 'NeedsCheckAssessmentForms'
+    | 'NeedsCheckAssessment',
 ): AppAction<ActionModel> => async (dispatch, getState) => {
   dispatch({ type: RiskAssessmentActionTypes.SetRiskAssessmentApprove });
   try {
@@ -20,9 +21,9 @@ export const SetRiskAssessmentApprove = (
     if (res.data) {
       setTimeout(() => {
         if (history) {
-          history.replace(`/${historyPath}/${id}`);
+          history.replace(`/${historyPath}`);
         }
-      }, 1000);
+      }, 100);
 
       const data = res.data;
       dispatch({
