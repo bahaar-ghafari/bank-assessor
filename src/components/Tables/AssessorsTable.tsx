@@ -53,7 +53,55 @@ export default function AssessorsTable(props: IProps) {
                   ? 'بانک ملت'
                   : row.bankName}
               </TableCell>
-              {hasStatus && <TableCell align="center">{row.status}</TableCell>}
+              {/**
+               * "CREATED":"ایجاد شده",
+"SUBMITTED":"در انتظار تایید شاخص‌ها توسط کمیته",
+"APPROVED_BY_COMMITTEE":"تایید شاخص‌ها توسط کمیته",
+"DECLINED_BY_COMMITTEE":"رد شاخص‌ها توسط کمیته",
+"STARTED":"در انتظار پاسخ ارزیابان بانک",
+"BANK_ASSESSED":"پاسخ داده شده توسط ارزیابان بانک",
+
+"BANK_ASSESSMENT_APPROVED":"تایید پاسخ‌های ارزیابان بانک",
+
+"BANK_ASSESSMENT_NOT_APPROVED":"رد پاسخ ارزیابان بانک",
+
+"GENERAL_ASSESSED":"پاسخ داده شده توسط ارزیابان بیرونی",
+
+"GENERAL_ASSESSMENT_APPROVED":"تایید پاسخ‌های ارزیابان بیرونی",
+
+"GENERAL_ASSESSMENT_NOT_APPROVED":"رد پاسخ‌های ارزیابان بیرونی",
+
+"FINISHED":"اتمام یافته",
+               */}
+              {hasStatus && (
+                <TableCell align="center">
+                  {row.status === 'CREATED'
+                    ? 'ایجاد شده'
+                    : row.status === 'SUBMITTED'
+                    ? 'در انتظار تایید شاخص‌ها توسط کمیته'
+                    : row.status === 'APPROVED_BY_COMMITTEE'
+                    ? 'تایید شاخص‌ها توسط کمیته'
+                    : row.status === 'DECLINED_BY_COMMITTEE'
+                    ? 'رد شاخص‌ها توسط کمیته"'
+                    : row.status === 'STARTED'
+                    ? 'در انتظار پاسخ ارزیابان بانک"'
+                    : row.status === 'BANK_ASSESSED'
+                    ? 'پاسخ داده شده توسط ارزیابان بانک'
+                    : row.status === 'BANK_ASSESSMENT_APPROVED'
+                    ? 'تایید پاسخ‌های ارزیابان بانک'
+                    : row.status === 'BANK_ASSESSMENT_NOT_APPROVED'
+                    ? 'رد پاسخ ارزیابان بانک'
+                    : row.status === 'GENERAL_ASSESSED'
+                    ? 'پاسخ داده شده توسط ارزیابان بیرونی'
+                    : row.status === 'GENERAL_ASSESSMENT_APPROVED'
+                    ? 'تایید پاسخ‌های ارزیابان بیرونی'
+                    : row.status === 'GENERAL_ASSESSMENT_NOT_APPROVED'
+                    ? 'رد پاسخ‌های ارزیابان بیرونی'
+                    : row.status === 'FINISHED'
+                    ? 'اتمام یافته'
+                    : row.status}
+                </TableCell>
+              )}
               <TableCell align="center">{getDate(row.startDate)}</TableCell>
               <TableCell align="center">{getDate(row.deadlineDate)}</TableCell>
               {hasAsction && <TableCell align="center">{row.action}</TableCell>}

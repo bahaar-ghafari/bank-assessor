@@ -90,7 +90,7 @@ export default function RiskAssesments({ assesmentStatus, historyPath }: IProps)
     : tempoColumns;
 
   const currentRiskAssessmentData = currentRiskAssessment?.data;
-  const listTempo = historyPath && ['getResponse', 'getGeneralResponse'].includes(historyPath);
+  const listTempo = historyPath && ['getResponse'].includes(historyPath);
   const list = listTempo
     ? currentRiskAssessmentData &&
       currentRiskAssessmentData
