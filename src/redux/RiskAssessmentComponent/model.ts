@@ -27,10 +27,25 @@ interface ICreateRiskAssessmentComponentSuccess extends Action<string> {
 interface ICreateRiskAssessmentComponentFail extends Action<string> {
   type: RiskAssessmentActionTypes.CreateRiskAssessmentComponentFail;
 }
+
+interface ICreateRiskComponents extends Action<string> {
+  type: RiskAssessmentActionTypes.CreateRiskComponents;
+}
+interface ICreateRiskComponentsSuccess extends Action<string> {
+  type: RiskAssessmentActionTypes.CreateRiskComponentsSuccess;
+  data: assesmentComponentModel;
+}
+interface ICreateRiskComponentsFail extends Action<string> {
+  type: RiskAssessmentActionTypes.CreateRiskComponentsFail;
+}
+
 export type ActionModel =
   | IRiskAssessmentComponent
   | IRiskAssessmentComponentSuccess
   | IRiskAssessmentComponentFail
   | ICreateRiskAssessmentComponent
   | ICreateRiskAssessmentComponentSuccess
-  | ICreateRiskAssessmentComponentFail;
+  | ICreateRiskAssessmentComponentFail
+  | ICreateRiskComponents
+  | ICreateRiskComponentsSuccess
+  | ICreateRiskComponentsFail;
