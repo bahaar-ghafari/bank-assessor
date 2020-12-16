@@ -1,14 +1,14 @@
-import { Box } from '@material-ui/core';
+import {Box} from '@material-ui/core';
 import React from 'react';
 import CustomButton from '../utils/buttons/Button';
 
 export const HandleViewElement = (
-  data: any,
-  list: any[],
-  classes: { submit: string | undefined },
-  handleShowAssessmentItems: (arg0: any) => any,
-) => {
-  return (
+    data: any,
+    historyPath: null | "created" | "submitted" | "getResponse" | "getGeneralResponse" | "checkBankResponse" | "checkAllResponse",
+    list: any[],
+    classes: { submit: string | undefined },
+    handleShowAssessmentItems: (arg0: any) => any) => {
+    return (
     <Box display="flex" alignItems="center" justifyContent="center">
       <CustomButton
         disabled={list && list.length ? false : true}
@@ -16,9 +16,28 @@ export const HandleViewElement = (
         variant="contained"
         color="primary"
         className={classes.submit}
-        label="مشاهده مولفه ها"
+        label={handleLabelName(historyPath)}
         onClickFunction={() => handleShowAssessmentItems(data)}
       />
     </Box>
   );
 };
+
+function handleLabelName(historyPath: null | "created" | "submitted" | "getResponse" | "getGeneralResponse" | "checkBankResponse" | "checkAllResponse"): string {
+    switch (historyPath) {
+        case "created":
+            return "مشاهده مولفه ها";
+        case "submitted":
+            return "مشاهده مولفه ها";
+        case "getResponse":
+            return "پاسخ دهی"
+        case "checkBankResponse":
+            return "مشاهده پاسخ بانک"
+        case "getGeneralResponse":
+            return "پاسخ دهی"
+        case "checkAllResponse":
+            return "مشاهده پاسخ ها"
+        default:
+            return "مولفه ها"
+    }
+}

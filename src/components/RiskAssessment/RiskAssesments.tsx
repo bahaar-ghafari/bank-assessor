@@ -103,7 +103,7 @@ export default function RiskAssesments({ assesmentStatus, historyPath }: IProps)
   const rows =
     list &&
     list.map((item) => {
-      return { ...item, action: HandleViewElement(item, list, classes, handleShowAssessmentItems) };
+      return { ...item, action: HandleViewElement(item, historyPath, list, classes, handleShowAssessmentItems) };
     });
   return (
     <>
