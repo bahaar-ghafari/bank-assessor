@@ -23,4 +23,8 @@ export enum RiskAssessmentActionTypes {
   CreateRiskAssessmentComponent = 'RiskAssessmentComponent/create',
   CreateRiskAssessmentComponentSuccess = 'RiskAssessmentComponentSuccess/create',
   CreateRiskAssessmentComponentFail = 'RiskAssessmentComponentFail/create',
+  //chanta arzyabi
+  CreateRiskComponents = 'RiskComponents/create',
+  CreateRiskComponentsSuccess = 'RiskComponentsSuccess/create',
+  CreateRiskComponentsFail = 'RiskComponentsFail/create',
 }
