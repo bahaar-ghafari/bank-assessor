@@ -21,6 +21,11 @@ export interface assesmentModel {
 export interface assesmentComponentModel {
   id: number;
   title: string;
-  bankAssessmentResponse: string;
-  generalAssessmentResponse: string;
+  bankAssessmentResponse: number;
+  generalAssessmentResponse: number;
+
+  questionId: number;
+  group: string;
+  questionBody: string;
+  include: boolean;
 }

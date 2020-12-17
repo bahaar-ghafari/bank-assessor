@@ -7,11 +7,10 @@ import Loading from '../../components/Loading/Loading';
 import NoData from '../../components/Nodata.tsx/NoData';
 import { DeleteRiskAssessment, RiskAssessment } from '../../redux/RiskAssessment/action';
 import { SetRiskAssessmentApprove } from '../../redux/RiskAssessmentApproveDenied/action';
-import { CreateRiskAssessmentComponent } from '../../redux/RiskAssessmentComponent/action';
+import { CreateRiskComponents } from '../../redux/RiskAssessmentComponent/action';
 import { IApplicationState } from '../../store/state';
 import CustomButton from '../../utils/buttons/Button';
-import CreateAsseessorComponentModal from './CreateAsseessorComponentModal';
-
+import CreateAsseessorListComponentModal from './CreateAsseessorsListComponentModal';
 import { GetRiskAssessmentComponent } from '../../redux/RiskAssessmentComponent/action';
 import AssessorItems from './AssessorItems';
 import NotificationManager from '../../components/Notification/NotificationManager';
@@ -23,8 +22,121 @@ interface IDataType {
   generalAssessmentResponse: string;
 }
 export default function AssessorsFormsStatusPerPage(): ReactElement {
+  const assessorsOption = [
+    {
+      label: 'بلوغ بانک را در آشنایی با تعریف و اهداف مدیریت ریسک نقدینگی چه مقدار ارزیابی میکنید؟',
+      value: 0,
+      status: false,
+    },
+    {
+      label:
+        'بلوغ بیانیه ریسک نقدینگی و مدل های اندازه گیری ریسک نقدینگی را چه مقدار ارزیابی می کنید؟',
+      value: 1,
+      status: false,
+    },
+    {
+      label:
+        'بلوغ بانک در تطابق با رهنمودها و دستورالعمل های مدیریت ریسک نقدینگی را چه میزان ارزیابی میکنید؟',
+      value: 2,
+      status: false,
+    },
+    {
+      label: 'بلوغ بانک را در آشنایی با تعریف و اهداف مدیریت ریسک بازار چه مقدار ارزیابی میکنید؟',
+      value: 3,
+      status: false,
+    },
+    {
+      label:
+        'بلوغ بیانیه ریسک بازار و اندازه گیری ریسک بازار در انواع آن را چه مقدار ارزیابی می کنید؟',
+      value: 44,
+      status: false,
+    },
+    {
+      label: 'بلوغ بانک را در آشنایی با تعریف و اهداف مدیریت ریسک عملیاتی چه مقدار ارزیابی میکنید؟',
+      value: 5,
+      status: false,
+    },
+    {
+      label:
+        'بلوغ بانک در تطابق با رهنمودها و دستورالعمل های مدیریت ریسک بازار را چه میزان ارزیابی میکنید؟',
+      value: 6,
+      status: false,
+    },
+    {
+      label:
+        'بلوغ بیانیه ریسک عملیاتی و اندازه گیری ریسک عملیاتی در انواع آن را چه مقدار ارزیابی می کنید؟',
+      value: 7,
+      status: false,
+    },
+    {
+      label:
+        'بلوغ بانک در تطابق با رهنمودها و دستورالعمل های مدیریت ریسک عملیاتی را چه میزان ارزیابی میکنید؟',
+      value: 8,
+      status: false,
+    },
+    {
+      label: 'بلوغ بانک را در اندازه گیری و مدیریت ریسک فرآیندها چه مقدار ارزیابی میکنید؟',
+      value: 9,
+      status: false,
+    },
+    {
+      label: 'بلوغ بانک را در اندازه گیری و مدیریت ریسک کارکنان چه مقدار ارزیابی میکنید؟',
+      value: 10,
+      status: false,
+    },
+    {
+      label: 'بلوغ بانک را در اندازه گیری و مدیریت ریسک سیستمها چه مقدار ارزیابی میکنید؟',
+      value: 11,
+      status: false,
+    },
+    {
+      label: 'بلوغ بانک را در اندازه گیری و مدیریت ریسک رویدادهای بیرونی چه مقدار ارزیابی میکنید؟',
+      value: 12,
+      status: false,
+    },
+    {
+      label: 'بلوغ بانک را در اندازه گیری و مدیریت ریسک فناوری اطلاعات چه مقدار ارزیابی میکنید؟',
+      value: 13,
+      status: false,
+    },
+    {
+      label:
+        'بلوغ بانک را در اندازه گیری و مدیریت انواع ریسک فناوری اطلاعات چه مقدار ارزیابی میکنید؟',
+      value: 14,
+      status: false,
+    },
+
+    {
+      label: 'بلوغ بانک را در اندازه گیری و مدیریت ریسک رویدادهای بیرونی چه مقدار ارزیابی میکنید؟',
+      value: 15,
+      status: false,
+    },
+    {
+      label: 'بلوغ بانک را در اندازه گیری و مدیریت ریسک فناوری اطلاعات چه مقدار ارزیابی میکنید؟',
+      value: 16,
+      status: false,
+    },
+    {
+      label:
+        'بلوغ بانک را در اندازه گیری و مدیریت انواع ریسک فناوری اطلاعات چه مقدار ارزیابی میکنید؟',
+      value: 17,
+      status: false,
+    },
+    {
+      label: 'بلوغ بانک را در آشنایی با تعریف و اهداف مدیریت ریسک تطبیق چه مقدار ارزیابی میکنید؟',
+      value: 18,
+      status: false,
+    },
+    {
+      label:
+        'بلوغ بانک را در اندازه گیری و مدیریت انواع ریسک تطبیق شامل (رفتار سازمان، رفتار مشتری، رفتار خدمات مالی، رفتار کارکنان و قوانین احتیاطی) چه مقدار ارزیابی می کنید؟',
+      value: 19,
+      status: false,
+    },
+  ];
   const [showdeleteModal, setshowdeleteModal] = useState(false);
-  const [showCreateModal, setshowCreateModal] = useState(false);
+  const [showCreateListModal, setshowCreateListModal] = useState(false);
+  const [assessorsList, setassessorsList] = useState(assessorsOption);
   const [loading, setLoading] = useState(false);
   const [openNotif, setopenNotif] = useState(false);
   const [Assessors, setAssessors] = useState({
@@ -79,8 +191,8 @@ export default function AssessorsFormsStatusPerPage(): ReactElement {
   const assessorItemsData = list?.map((item) => {
     return {
       key: '',
-      value: '',
-      title: item.title,
+      value: 0,
+      title: item.questionBody,
       id: item.id,
     };
   });
@@ -97,19 +209,39 @@ export default function AssessorsFormsStatusPerPage(): ReactElement {
     }, 200);
     setshowdeleteModal(false);
   };
-  const handleChange = (name: string, value: string) => {
-    setAssessors({ ...Assessors, [name]: value });
+
+  const handleChangeCheckBox = (val: number) => {
+    const res = assessorsList.map((item) => {
+      if (item.value === val) {
+        console.log(item);
+        return {
+          ...item,
+          status: !item.status,
+        };
+      }
+      return item;
+    });
+    console.log(assessorsList);
+    setassessorsList(res);
   };
+
   const handleSubmit = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
-    dispatch(CreateRiskAssessmentComponent(Assessors.title, assID));
+    dispatch(
+      CreateRiskComponents(
+        assessorsList.filter((item) => item.status === true).map((item) => item.value),
+        assID,
+      ),
+    );
+
     setLoading(true);
     setTimeout(() => {
       dispatch(GetRiskAssessmentComponent(history, 'created', assID));
       setLoading(false);
     }, 2000);
-    setshowCreateModal(false);
+    setshowCreateListModal(false);
   };
+
   const handleApprove = () => {
     setopenNotif(true);
     dispatch(SetRiskAssessmentApprove('submit', assID, history, 'AssessorsFormsStatus'));
@@ -124,11 +256,10 @@ export default function AssessorsFormsStatusPerPage(): ReactElement {
             variant="contained"
             color="primary"
             className={classes.submit}
-            label="افزودن مولفه ارزیابی"
-            onClickFunction={() => setshowCreateModal(true)}
+            label="افزودن مولفه ارزیابی از لیست"
+            onClickFunction={() => setshowCreateListModal(true)}
           />
         )}
-        {/* اکسل */}
         <CustomButton
           disabled={list && list.length ? false : true}
           type="submit"
@@ -139,12 +270,12 @@ export default function AssessorsFormsStatusPerPage(): ReactElement {
           onClickFunction={handleApprove}
         />
       </Box>
-      {showCreateModal && (
-        <CreateAsseessorComponentModal
-          open={showCreateModal}
-          onClose={() => setshowCreateModal(false)}
-          title={Assessors.title}
-          onHandleChange={handleChange}
+      {showCreateListModal && (
+        <CreateAsseessorListComponentModal
+          open={showCreateListModal}
+          onClose={() => setshowCreateListModal(false)}
+          list={assessorsList}
+          onHandleChange={handleChangeCheckBox}
           onHandleSubmit={handleSubmit}
         />
       )}

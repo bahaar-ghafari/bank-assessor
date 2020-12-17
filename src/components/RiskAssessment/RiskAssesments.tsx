@@ -50,7 +50,6 @@ export default function RiskAssesments({ assesmentStatus, historyPath }: IProps)
 
   const currentUser = useSelector((state: IApplicationState) => state.auth);
   const currentRiskAssessment = useSelector((state: IApplicationState) => state.riskAssessment);
-
   const useStyles = makeStyles((theme) => ({
     submit: {
       margin: theme.spacing(0, 1, 0),
@@ -94,11 +93,13 @@ export default function RiskAssesments({ assesmentStatus, historyPath }: IProps)
   const listTempo = historyPath && ['getResponse'].includes(historyPath);
   const list = listTempo
     ? currentRiskAssessmentData &&
+      currentRiskAssessmentData[0] &&
       currentRiskAssessmentData
-        ?.filter((item) => item.status === assesmentStatus)
+        .filter((item) => item.status === assesmentStatus)
         .filter((item) => item.bankName === currentUser.role)
     : currentRiskAssessmentData &&
-      currentRiskAssessmentData?.filter((item) => item.status === assesmentStatus);
+      currentRiskAssessmentData[0] &&
+      currentRiskAssessmentData.filter((item) => item.status === assesmentStatus);
 
   const rows =
     list &&

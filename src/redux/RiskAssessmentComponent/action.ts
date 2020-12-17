@@ -32,26 +32,7 @@ export const GetRiskAssessmentComponent = (
   }
 };
 
-export const CreateRiskAssessmentComponent = (
-  data: string,
-  id: number,
-): AppAction<ActionModel> => async (dispatch, getState) => {
-  dispatch({ type: RiskAssessmentActionTypes.CreateRiskAssessmentComponent });
-  try {
-    const res = await RiskAssessmentApi.createRiskAssessmentComponent(data, id);
-    if (res.data) {
-      const data = res.data;
-      dispatch({
-        type: RiskAssessmentActionTypes.CreateRiskAssessmentComponentSuccess,
-        data: data,
-      });
-    }
-  } catch (error) {
-    dispatch({ type: RiskAssessmentActionTypes.CreateRiskAssessmentComponentFail });
-  }
-};
-
-export const CreateRiskComponents = (data: string[], id: number): AppAction<ActionModel> => async (
+export const CreateRiskComponents = (data: number[], id: number): AppAction<ActionModel> => async (
   dispatch,
   getState,
 ) => {

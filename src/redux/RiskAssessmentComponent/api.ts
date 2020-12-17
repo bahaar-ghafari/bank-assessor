@@ -23,12 +23,11 @@ export const RiskAssessmentApi = {
     return axios.get(RiskAssessmentUrl + `/risk-assessment/${id}`);
   },
   getRiskAssessmentComponent: async (id: number) => {
-    return axios.get(RiskAssessmentUrl + `/risk-assessment/${id}/component`);
+    return axios.get(
+      RiskAssessmentUrl + `/risk-assessment/${id}/component?fetchAllQuestions=false`,
+    );
   },
-  createRiskAssessmentComponent: async (data: string, id: number) => {
-    return axios.put(RiskAssessmentUrl + `/risk-assessment/${id}/component?title=${data}`);
-  },
-  createRiskComponents: async (data: string[], id: number) => {
+  createRiskComponents: async (data: number[], id: number) => {
     return axios.post(RiskAssessmentUrl + `/risk-assessment/${id}/component`, data);
   },
   DeleteRiskAssessment: async (id: number) => {

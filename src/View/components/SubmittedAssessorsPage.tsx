@@ -35,7 +35,6 @@ export default function SubmittedAssessorsPage(): ReactElement {
   const assessorItemsData = list?.map((item) => {
     return {
       key: '',
-      value: '',
       title: item.title,
     };
   });

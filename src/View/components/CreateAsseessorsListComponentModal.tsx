@@ -1,19 +1,19 @@
 import { Dialog, DialogContent } from '@material-ui/core';
 import React, { ReactElement } from 'react';
 import CustomButton from '../../utils/buttons/Button';
-import CustomTextField from '../../utils/inputs/TextField';
+import CustomCheckBox from '../../utils/checkBox/CheckBox';
 import CustomTypoGraphy from '../../utils/typoGraphy/TypoGraphy';
 
 type IProps = {
   open: boolean;
   onClose: () => void;
-  title: string;
+  list: { label: string; value: number; status: boolean }[];
   onHandleChange: any;
   onHandleSubmit: any;
 };
 
-export default function CreateAsseessorComponentModal(props: IProps): ReactElement {
-  const { open, onClose, title, onHandleChange, onHandleSubmit } = props;
+export default function CreateAsseessorsListComponentModal(props: IProps): ReactElement {
+  const { open, onClose, list, onHandleChange, onHandleSubmit } = props;
 
   return (
     <Dialog maxWidth="xl" open={open} onClose={onClose}>
@@ -21,22 +21,17 @@ export default function CreateAsseessorComponentModal(props: IProps): ReactEleme
         <div dir="rtl">
           <CustomTypoGraphy component="h1" variant="h5" label="تعریف مولفه ارزیابی " />
           <form>
-            <CustomTextField
-              width="20%"
-              variant="outlined"
-              margin="normal"
-              required={true}
-              fullWidth={true}
-              id="title"
-              label="عنوان"
-              name="title"
-              autoComplete="title"
-              autoFocus={true}
-              value={title}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                onHandleChange(e.target.name, e.target.value)
-              }
-            />
+            {list.map((item) => (
+              <div>
+                <CustomCheckBox
+                  value={item.value.toString()}
+                  color="secondary"
+                  label={item.label}
+                  status={item.status}
+                  handleChange={() => onHandleChange(item.value)}
+                />
+              </div>
+            ))}
             <CustomButton
               type="submit"
               fullWidth={true}
