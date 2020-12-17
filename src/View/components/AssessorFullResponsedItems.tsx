@@ -36,7 +36,7 @@ export default function AssessorFullResponsedItems({ data, renderAction }: Props
               <Box alignItems="center" width="10%" display="flex">
                 {item.key2} :{' '}
               </Box>
-              <CustomTypoGraphy component="h3" label={item.value2.toString()} />
+              <CustomTypoGraphy component="h3" label={item.value2 != null ? item.value2.toString() : ''} />
             </Box>
 
             {renderAction ? renderAction(item) : null}
