@@ -18,7 +18,7 @@ const useStyles = makeStyles({
 });
 type IProps = {
   rows: any;
-  columns: any;
+  columns: { label: string; value: string }[];
   hasAsction?: boolean;
   hasStatus?: boolean;
 };
