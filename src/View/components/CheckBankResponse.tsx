@@ -10,7 +10,7 @@ import CustomButton from '../../utils/buttons/Button';
 import { GetRiskAssessmentComponent } from '../../redux/RiskAssessmentComponent/action';
 import AssessorItems from './AssessorItems';
 import NotificationManager from '../../components/Notification/NotificationManager';
-import AssessorFullResponsedItems from "./AssessorFullResponsedItems";
+import AssessorFullResponsedItems from './AssessorFullResponsedItems';
 
 export default function CheckBankResponse(): ReactElement {
   const currentRiskAssessmentComponent = useSelector(
@@ -41,13 +41,13 @@ export default function CheckBankResponse(): ReactElement {
 
   const list = currentRiskAssessmentComponent?.data;
   const assessorItemsData = list?.map((item) => {
-      return {
-        key: 'پاسخ بانک',
-        value: item.bankAssessmentResponse,
-        key2: 'پاسخ ارزیاب عمومی',
-        value2: item.generalAssessmentResponse,
-        title: item.title,
-      };
+    return {
+      key: 'پاسخ بانک',
+      value: item.bankAssessmentResponse,
+      key2: 'پاسخ ارزیاب عمومی',
+      value2: item.generalAssessmentResponse,
+      title: item.title,
+    };
   });
   const handleApprove = () => {
     setopenNotif(true);
@@ -78,11 +78,12 @@ export default function CheckBankResponse(): ReactElement {
           onClickFunction={handleDeny}
         />
       </Box>
-      {list && list.length ? ( pathhistry === 'checkBankResponse'? (
-            <AssessorItems data={assessorItemsData} renderAction={false} />
-          ):(
-            <AssessorFullResponsedItems data={assessorItemsData} renderAction={false} />
-          )
+      {list && list.length ? (
+        pathhistry === 'checkBankResponse' ? (
+          <AssessorItems data={assessorItemsData} renderAction={false} />
+        ) : (
+          <AssessorFullResponsedItems data={assessorItemsData} renderAction={false} />
+        )
       ) : (
         <NoData />
       )}
