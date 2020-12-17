@@ -61,8 +61,9 @@ export default function ResponseForm(): ReactElement {
         list.map((item, index: number) => (
           <Box key={index}>
             <Box>
-              <Box>متن سوال</Box>
-              <Box m={2}>{item.title}</Box>
+
+              <Box>{item.title}</Box>
+              <Box m={2}>{item.questionBody}</Box>
             </Box>
             <RangePicker
               value={response[index]}
