@@ -17,6 +17,7 @@ import NotFoundComponent from './View/NotFoundComponent';
 import SubmittedAssessorsPage from './View/components/SubmittedAssessorsPage';
 import ResponseForm from './View/components/ResponseForm';
 import checkBankResponse from './View/components/CheckBankResponse';
+import GetAssessmentReport from "./View/components/GetAssessmentReport";
 function PrivateRout() {
   return (
     <Switch>
@@ -26,6 +27,7 @@ function PrivateRout() {
       <Route path="/DefineNewAssessorsForms" component={DefineNewAssessorsForms} />
       <Route path="/CheckBankAssessorSResponse" component={CheckBankAssessorSResponse} />
       <Route path="/GetReports" component={GetReports} />
+      <Route path="/getReport/:id" component={GetAssessmentReport} />
       {/*  committee_sideBarItems*/}
       <Route path="/checkAllResponse/:id" component={checkBankResponse} />
       <Route path="/submitted/:id" component={SubmittedAssessorsPage} />

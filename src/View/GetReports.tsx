@@ -7,49 +7,9 @@ import AssessorsTable from '../components/Tables/AssessorsTable';
 import Loading from '../components/Loading/Loading';
 import { makeStyles } from '@material-ui/core';
 import NoData from '../components/Nodata.tsx/NoData';
+import RiskAssesments from "../components/RiskAssessment/RiskAssesments";
 
 //
 export default function GetReports(): ReactElement {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    // effect
-    dispatch(RiskAssessment());
-  }, []);
-
-  const currentRiskAssessment = useSelector((state: IApplicationState) => state.riskAssessment);
-
-  const columns = [
-    {
-      label: 'عنوان',
-      value: 'title',
-    },
-    {
-      label: 'نام بانک',
-      value: 'bankName',
-    },
-    {
-      label: 'وضعیت',
-      value: 'status',
-    },
-    {
-      label: 'زمان شروع',
-      value: 'startDate',
-    },
-    {
-      label: 'زمان پایان',
-      value: 'deadlineDate',
-    },
-  ];
-  const list = currentRiskAssessment?.data?.filter((item) => item.status === 'CREATED');
-
-  return (
-    <>
-      {list ? (
-        <AssessorsTable rows={list} columns={columns} hasAsction={false} hasStatus={true} />
-      ) : (
-        <NoData />
-      )}
-      {currentRiskAssessment?.loading && <Loading />}
-    </>
-  );
+  return <RiskAssesments assesmentStatus={'FINISHED'} historyPath="getReport" />;
 }

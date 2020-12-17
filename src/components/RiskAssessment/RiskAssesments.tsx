@@ -39,6 +39,7 @@ interface IProps {
     | 'getGeneralResponse'
     | 'checkBankResponse'
     | 'checkAllResponse'
+    | 'getReport'
     | null;
 }
 export default function RiskAssesments({ assesmentStatus, historyPath }: IProps): ReactElement {

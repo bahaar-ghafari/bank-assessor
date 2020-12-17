@@ -4,7 +4,7 @@ import CustomButton from '../utils/buttons/Button';
 
 export const HandleViewElement = (
     data: any,
-    historyPath: null | "created" | "submitted" | "getResponse" | "getGeneralResponse" | "checkBankResponse" | "checkAllResponse",
+    historyPath: null | "created" | "submitted" | "getResponse" | "getGeneralResponse" | "checkBankResponse" | "checkAllResponse" | 'getReport',
     list: any[],
     classes: { submit: string | undefined },
     handleShowAssessmentItems: (arg0: any) => any) => {
@@ -23,7 +23,7 @@ export const HandleViewElement = (
   );
 };
 
-function handleLabelName(historyPath: null | "created" | "submitted" | "getResponse" | "getGeneralResponse" | "checkBankResponse" | "checkAllResponse"): string {
+function handleLabelName(historyPath: null | "created" | "submitted" | "getResponse" | "getGeneralResponse" | "checkBankResponse" | "checkAllResponse" | 'getReport', ): string {
     switch (historyPath) {
         case "created":
             return "مشاهده مولفه ها";
@@ -37,6 +37,8 @@ function handleLabelName(historyPath: null | "created" | "submitted" | "getRespo
             return "پاسخ دهی"
         case "checkAllResponse":
             return "مشاهده پاسخ ها"
+        case "getReport":
+            return "مشاهده گزارش"
         default:
             return "مولفه ها"
     }

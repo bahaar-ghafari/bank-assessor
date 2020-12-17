@@ -11,7 +11,9 @@ export const GetRiskAssessmentComponent = (
     | 'getResponse'
     | 'getGeneralResponse'
     | 'checkBankResponse'
-    | 'checkAllResponse',
+    | 'checkAllResponse'
+    | 'getReport'
+    ,
   id: number,
 ): AppAction<ActionModel> => async (dispatch, getState) => {
   dispatch({ type: RiskAssessmentActionTypes.GetRiskAssessmentComponent });

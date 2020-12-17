@@ -32,7 +32,12 @@ export const risk_management_assessor_sideBarItems = [
     icon: <BarChartIcon />,
     rout: 'CheckBankAssessorSResponse',
   },
-  { id: 4, name: 'اخذ گزارشات', icon: <AssignmentIcon />, rout: 'GetReports' },
+  {
+    id: 4,
+    name: 'اخذ گزارشات',
+    icon: <AssignmentIcon />,
+    rout: 'GetReports'
+  },
 ];
 export const committee_sideBarItems = [
   {
