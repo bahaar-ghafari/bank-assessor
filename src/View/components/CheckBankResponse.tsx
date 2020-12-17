@@ -47,6 +47,7 @@ export default function CheckBankResponse(): ReactElement {
       key2: 'پاسخ ارزیاب عمومی',
       value2: item.generalAssessmentResponse,
       title: item.title,
+      qbody: item.questionBody
     };
   });
   const handleApprove = () => {

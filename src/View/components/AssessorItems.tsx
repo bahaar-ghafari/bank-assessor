@@ -3,7 +3,7 @@ import React, { ReactElement } from 'react';
 import CustomTypoGraphy from '../../utils/typoGraphy/TypoGraphy';
 
 interface Props {
-  data: { key: string; value?: number; title: string }[];
+  data: { key: string; value?: number; title: string; qbody: string }[];
   renderAction?: any;
 }
 
@@ -25,6 +25,12 @@ export default function AssessorItems({ data, renderAction }: Props): ReactEleme
                 عنوان :{' '}
               </Box>
               <CustomTypoGraphy component="h3" label={item.title} />
+            </Box>
+            <Box display="flex" mb={3}>
+              <Box alignItems="center" width="10%" display="flex">
+                متن سوال :{' '}
+              </Box>
+              <CustomTypoGraphy component="h3" label={item.qbody.toString()} />
             </Box>
             <Box display="flex" mb={3}>
               <Box alignItems="center" width="10%" display="flex">

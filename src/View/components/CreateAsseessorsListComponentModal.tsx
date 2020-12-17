@@ -19,7 +19,7 @@ export default function CreateAsseessorsListComponentModal(props: IProps): React
     <Dialog maxWidth="xl" open={open} onClose={onClose}>
       <DialogContent>
         <div dir="rtl">
-          <CustomTypoGraphy component="h1" variant="h5" label="تعریف مولفه ارزیابی " />
+          <CustomTypoGraphy component="h1" variant="h5" label="انتخاب مولفه‌های ارزیابی " />
           <form>
             {list.map((item) => (
               <div>

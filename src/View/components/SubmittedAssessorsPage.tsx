@@ -36,6 +36,7 @@ export default function SubmittedAssessorsPage(): ReactElement {
     return {
       key: '',
       title: item.title,
+      qbody: item.questionBody
     };
   });
   const handleApprove = () => {
