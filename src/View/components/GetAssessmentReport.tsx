@@ -11,12 +11,17 @@ export default function GetAssessmentReport(): ReactElement {
   const currentRiskAssessmentComponent = useSelector(
     (state: IApplicationState) => state.riskAssessmentComponent,
   );
+  const currentRiskAssessment = useSelector(
+      (state: IApplicationState) => state.riskAssessment?.data,
+  );
 
   const dispatch = useDispatch();
   const history = useHistory();
 
   const pathhistry = 'getReport';
   const assID = parseInt(history.location.pathname.split('/')[2]);
+  const currentRiskAssessmentTitle =
+      currentRiskAssessment.find((item) => item.id === assID)?.title;
 
   useEffect(() => {
     dispatch(RiskAssessment());
@@ -37,7 +42,7 @@ export default function GetAssessmentReport(): ReactElement {
   return (
     <>
       {list && list.length ? (
-          <FullResponsedChart data={assessorItemsData} renderAction={false} />
+          <FullResponsedChart data={assessorItemsData} assessmentTitle={currentRiskAssessmentTitle} renderAction={false} />
       ) : (
         <NoData />
       )}
