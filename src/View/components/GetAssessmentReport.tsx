@@ -5,7 +5,7 @@ import NoData from '../../components/Nodata.tsx/NoData';
 import {RiskAssessment} from '../../redux/RiskAssessment/action';
 import {IApplicationState} from '../../store/state';
 import {GetRiskAssessmentComponent} from '../../redux/RiskAssessmentComponent/action';
-import AssessorFullResponsedItems from './AssessorFullResponsedItems';
+import FullResponsedChart from "./FullresponsedChart";
 
 export default function GetAssessmentReport(): ReactElement {
   const currentRiskAssessmentComponent = useSelector(
@@ -37,7 +37,7 @@ export default function GetAssessmentReport(): ReactElement {
   return (
     <>
       {list && list.length ? (
-          <AssessorFullResponsedItems data={assessorItemsData} renderAction={false} />
+          <FullResponsedChart data={assessorItemsData} renderAction={false} />
       ) : (
         <NoData />
       )}
