@@ -7,8 +7,8 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import { logOutRequest } from '../../redux/Auth/action';
 import { useDispatch } from 'react-redux';
 
-import tarbiatModarresLogo from '../../assets/img/modarres.jpg';
-import vezarat_eghtesadLogo from '../../assets/img/vEghtesad.jpeg';
+import tarbiatModarresLogo from '../../assets/img/modarres-removebg-preview.png';
+import vezarat_eghtesadLogo from '../../assets/img/vEghtesad-removebg-preview.png';
 
 import BANK_MASKAN from '../../assets/img/bank_maskan.png';
 import BANK_MELLAT from '../../assets/img/bank_mellat.png';
@@ -25,7 +25,7 @@ export default function Header(props: Props): ReactElement {
   const { handleDrawerOpen, open, classes, currentUser, history } = props;
   const dispatch = useDispatch();
   return (
-    <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
+    <AppBar position="absolute" color={"default"} className={clsx(classes.appBar, open && classes.appBarShift)}>
       <Toolbar
         className={classes.toolbar}
         style={{ display: 'flex', justifyContent: 'space-between' }}

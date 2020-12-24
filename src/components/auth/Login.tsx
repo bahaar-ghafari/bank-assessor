@@ -12,18 +12,20 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginRequest } from '../../redux/Auth/action';
 import { theme } from '../../Constants/Theme';
-import tarbiatModarresLogo from '../../assets/img/modarres.jpg';
-import vezarat_eghtesadLogo from '../../assets/img/vEghtesad.jpeg';
+import tarbiatModarresLogo from '../../assets/img/modarres-removebg-preview.png';
+import vezarat_eghtesadLogo from '../../assets/img/vEghtesad-removebg-preview.png';
 import NotificationManager from '../Notification/NotificationManager';
 import { IApplicationState } from '../../store/state';
 import Loading from '../Loading/Loading';
+import Background from '../../assets/img/background_image.png';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
+    fontFamily: 'Vazir',
   },
   image: {
-    backgroundImage: 'url(../../assets/img/modarres.jpg)',
+    backgroundImage: `url(${Background})`,
     backgroundRepeat: 'no-repeat',
     backgroundColor:
       theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
@@ -46,6 +48,14 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+  },
+  title: {
+    color: 'white',
+    paddingRight: 20,
+    paddingTop: 30,
+  },
+  login: {
+    backgroundColor: 'lightgrey',
   },
 }));
 
@@ -81,9 +91,9 @@ export default function Login() {
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
       {/* <Grid item xs={false} sm={4} md={7} className={classes.image} /> */}
-      <Grid item xs={false} sm={4} md={7} className={classes.image}>
-        <Box height="100vh" display="flex" flexDirection="column" justifyContent="center">
-          <Box display="flex" alignItems="center" justifyContent="center">
+      <Grid item xs={false} sm={4} md={8} className={classes.image}>
+        <Box height="100vh" display="flex" flexDirection="column" justifyContent="flex-start" className={classes.title}>
+          <Box display="flex" alignItems="center" justifyContent="flex-end" >
             <img
               width="164px"
               height="164px"
@@ -97,14 +107,15 @@ export default function Login() {
               alt="vezarat_eghtesad_logo"
             />
           </Box>
-          <Box display="flex" flexDirection="column" alignItems="center">
-            <h3> (سامانه ارزیابی بلوغ مدیریت ریسک(ویرایش دمو</h3>
-            <h4>وزارت امور اقتصاد و دارایی با همکاری</h4>
-            <h4>دانشگاه تربیت مدرس</h4>
+          <Box display="flex" justifyContent="flex-end">
+              <Box display="flex" flexDirection="column" alignItems="center">
+                <h3> سامانه ارزیابی بلوغ مدیریت ریسک و حاکمیت شرکتی</h3>
+                <h4>(ویرایش دمو)</h4>
+              </Box>
           </Box>
         </Box>
       </Grid>
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+      <Grid item xs={12} sm={8} md={4} component={Paper} elevation={6} square className={classes.login}>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
