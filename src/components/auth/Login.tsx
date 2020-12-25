@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'Vazir',
   },
   image: {
-    backgroundImage: `url(${Background})`,
+    // backgroundImage: `url(${Background})`,
     backgroundRepeat: 'no-repeat',
     backgroundColor:
       theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
   title: {
-    color: 'white',
+    color: 'black',
     paddingRight: 20,
     paddingTop: 30,
   },
@@ -92,8 +92,8 @@ export default function Login() {
       <CssBaseline />
       {/* <Grid item xs={false} sm={4} md={7} className={classes.image} /> */}
       <Grid item xs={false} sm={4} md={8} className={classes.image}>
-        <Box height="100vh" display="flex" flexDirection="column" justifyContent="flex-start" className={classes.title}>
-          <Box display="flex" alignItems="center" justifyContent="flex-end" >
+        <Box height="100vh" display="flex" flexDirection="column" justifyContent="center" className={classes.title}>
+          <Box display="flex" alignItems="center" justifyContent="center" >
             <img
               width="164px"
               height="164px"
@@ -107,7 +107,7 @@ export default function Login() {
               alt="vezarat_eghtesad_logo"
             />
           </Box>
-          <Box display="flex" justifyContent="flex-end">
+          <Box display="flex" justifyContent="center">
               <Box display="flex" flexDirection="column" alignItems="center">
                 <h3> سامانه ارزیابی بلوغ مدیریت ریسک و حاکمیت شرکتی</h3>
                 <h4>(ویرایش دمو)</h4>
